@@ -1,0 +1,125 @@
+\documentclass[a5paper,11pt]{book}
+\usepackage{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[spanish,es-nodecimaldot]{babel}
+
+\usepackage{float}
+% \usepackage{booktabs}
+% \usepackage[bookmarks]{hyperref}
+
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+% theorems
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfsetup{skipabove=1em,skipbelow=0em, innertopmargin=5pt, innerbottommargin=6pt}
+
+\theoremstyle{definition}
+
+\makeatletter
+
+\declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, mdframed={ nobreak } ]{thmgreenbox}
+\declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, mdframed={ nobreak } ]{thmredbox}
+\declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont]{thmbluebox}
+\declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont]{thmblueline}
+\declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, numbered=no, mdframed={ rightline=false, topline=false, bottomline=false, }, qed=\qedsymbol ]{thmproofbox}
+\declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, numbered=no, mdframed={ nobreak, rightline=false, topline=false, bottomline=false } ]{thmexplanationbox}
+
+
+\declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Definición]{definition}
+\declaretheorem[sibling=definition, style=thmredbox, name=Corolario]{corollary}
+\declaretheorem[sibling=definition, style=thmredbox, name=Proposición]{prop}
+\declaretheorem[sibling=definition, style=thmredbox, name=Teorema]{theorem}
+\declaretheorem[sibling=definition, style=thmredbox, name=Lema]{lemma}
+
+
+
+\declaretheorem[numbered=no, style=thmexplanationbox, name=Demostración]{explanation}
+\declaretheorem[numbered=no, style=thmproofbox, name=Demostración]{replacementproof}
+\declaretheorem[style=thmbluebox,  numbered=no, name=Ejercicio]{ex}
+\declaretheorem[style=thmbluebox,  numbered=no, name=Ejemplo]{eg}
+\declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
+\declaretheorem[style=thmblueline, numbered=no, name=Nota]{note}
+
+\renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
+
+\AtEndEnvironment{eg}{\null\hfill$\diamond$}%
+
+\newtheorem*{uovt}{UOVT}
+\newtheorem*{notation}{Notación}
+\newtheorem*{previouslyseen}{Como ya se ha visto}
+\newtheorem*{problem}{Problema}
+\newtheorem*{solution}{Solución}
+\newtheorem*{observe}{Observe}
+\newtheorem*{property}{Propiedad}
+
+% \pagestyle{fancy}
+
+% \newtheorem{theorem}{Teorema}[section]
+% \newtheorem{corollary}{Corolario}[theorem]
+% \newtheorem{lemma}[theorem]{Lema}
+%
+% \theoremstyle{definition}
+% \newtheorem{definition}{Definición}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+% 'dedication' environment: To add a dedication paragraph at the start of book
+% Source: http://www.tug.org/pipermail/texhax/2010-June/015184.html
+\newenvironment{dedication}
+{
+    \cleardoublepage
+    \thispagestyle{empty}
+    \vspace*{\stretch{1}}
+    \hfill\begin{minipage}[t]{0.66\textwidth}
+        \raggedright
+    }
+    {
+    \end{minipage}
+    \vspace*{\stretch{3}}
+    \clearpage
+}
+
+% Chapter quote at the start of chapter
+% Source: http://tex.stackexchange.com/a/53380
+\makeatletter
+\newenvironment{chapquote}[2][2em]
+{\setlength{\@tempdima}{#1}%
+    \def\chapquote@author{#2}%
+    \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+\itshape}
+{\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
+
+% \title{Notas de Análisis Numérico}
+\title{\textbf{Notas de Análisis Numérico} \\ \small con Lozano :) }
+\author{Francisco Galindo}
+
+\date{Última actualización: \today}
+
+\begin{document}
+\frontmatter
+
+\maketitle
+
+\begin{dedication}
+    Para Yael y el Erick
+\end{dedication}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\mainmatter
+
+\input{contenido/1}
+
+\end{document}
