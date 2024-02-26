@@ -1,0 +1,6 @@
+[submodule "latex-note-preamble"]
+	path = latex-note-preamble
+	url = https://github.com/Francisco-Galindo/latex-note-preamble
+[submodule "latex-titlepage"]
+	path = latex-titlepage
+	url = https://github.com/Francisco-Galindo/latex-titlepage
