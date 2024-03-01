@@ -8,15 +8,15 @@
 \section{Sobre raíces de polinomios}
 
 Prescindiendo del grado, todo polinomio tiene asociado un grupo, y
-descubró que:
+descubrió que:
 
 \begin{quote}
     Una ecuación es soluble si y solo si, su grupo de Galois es soluble,
-    entendido por ecuación soluble aquellaque puede resolverse mediante
+    entendido por ecuación soluble aquella que puede resolverse mediante
     operaciones elementales con radicales
 \end{quote}
 
-Lo anterior se logró mediante la observación del gripo de permutaciones
+Lo anterior se logró mediante la observación del grupo de permutaciones
 de \(n\) elementos, es decir \(S_n\). Él se dio cuenta de que el primer
 grupo sin soluciones es \(S_5\), por lo que ningún polinomio de grado
 mayor o igual a 5 tiene una solución exacta mediante operaciones
@@ -542,8 +542,9 @@ de Taylor multivariables resultan de gran utilidad.
 
 \end{definition}
 
-A partir de la definición \ref{eq:def-taylor-multi}, adsfasdf. Si asumimos que
-el punto $(a_1, a_2, ..., a_n)$ está cerca de $(x_1, x_2, ..., x_n)$, es decir:
+A partir de la definición \ref{eq:def-taylor-multi}, puede estimarse la
+incertidumbre en una función multivariable. Si asumimos que el punto $(a_1, a_2,
+..., a_n)$ está cerca de $(x_1, x_2, ..., x_n)$, es decir:
 
 \begin{align*}
 	x_1 - a_1 < 1 \\
@@ -551,6 +552,8 @@ el punto $(a_1, a_2, ..., a_n)$ está cerca de $(x_1, x_2, ..., x_n)$, es decir:
 	\vdots \\
 	x_n - a_n < 1
 \end{align*}
+
+Puede simplificarse \ref{eq:def-taylor-multi} a sus términos de primer orden:
 
 \begin{align*}
 	f(\overline{x}) \approx f(\overline{a}) + \sum_{k=1}^{n} \
@@ -608,15 +611,68 @@ incertidumbres de cada una de las variables $x_i \forall i \in N, i \leq n$.
 		Aplicando la ecuación \ref{eq:desigualdad-tri-taylor},
 
 		\begin{align*}
-			\Delta P &=
+			\Delta P &\leq
 			\left| \frac{\partial P}{\partial I} \right| \Delta I +
 			\left| \frac{\partial P}{\partial V} \right| \Delta V \\
-				 &= \left| V \right| \Delta I + \left| I\right|
-				 \Delta V
+				 &\leq \left| V \right| \Delta I + \left| I\right|
+				 \Delta V \\
+				 &\leq 127 [V](0.1 [I]) + 2 [I](0.3 [V]) \\
+			\therefore \Delta P &\leq 13.3 [W]
 		\end{align*}
-
-
-
 	\end{solution}
 \end{ex}
 
+
+\begin{ex}
+	
+	Se desea determinar la energia cinética de una partícula, la cual se
+	calcula con la siguiente expresión:
+
+	\begin{equation*}
+		E = \frac{1}{2} m v^2
+	\end{equation*}
+
+	Si se ha determinado de manera experimental que \(m = 10^{-8}\) [kg] y $v
+	= 15 [\frac{m}{s}]$, determine la energía cinética si la incertidumbre
+	de las medidas para la masa y la velocidad son de $\pm 10^{-10}$ [kg] y
+	$\pm 0.02 [\frac{m}{s}]$.
+
+	\begin{solution}
+
+		Sustituyendo directamente sin las incertidumbre, la energía
+		cinética es:
+
+		\begin{equation*}
+			E = 1.125 \times 10^{-6} \text{ [J]}
+		\end{equation*}
+
+		La función cuya incertidumbre se quiere encontrar es
+
+		\begin{equation*}
+			E(m, v) = \frac{1}{2} m v^2
+		\end{equation*}
+
+		La ecuación \ref{eq:desigualdad-tri-taylor} permite calcular la
+		incertidumbre:
+
+		\begin{align*}
+			\Delta E &\leq \left[ \left| \frac{\partial E}{\partial m}
+			\right| \Delta m + \left| \frac{\partial E}{\partial v}
+		\right| \Delta d \right]_{m = 10^{-8}, v = 15}\\
+		%
+				 &\leq \left[ \left| \frac{v^2}{2}
+			\right| \Delta m + \left| m v \right| \Delta d 
+		\right]_{m = 10^{-8}, v = 15} \\
+		%
+				 &\leq 1.425 \times 10^{-8} \text{ [J]}
+		\end{align*}
+
+		Así, la energía cinética es
+
+		\begin{center}
+			\boxed{E(m, v) = 1.125
+			\times 10^{-6} \pm 1.425 \times 10^{-8} \text{ [J]}}
+		\end{center}
+
+	\end{solution}
+\end{ex}
