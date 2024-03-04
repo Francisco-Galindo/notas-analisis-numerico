@@ -9,7 +9,7 @@
 
 En general, existen dos tipos de funciones matemáticas:
 
-\begin{definition}[Función algebráica]
+\begin{definition}[Función algebraica]
 	En el caso de una variable, se dice que una función \(f(x)\) es
 	algebraica si se expresa de la siguiente manera:
 
@@ -17,9 +17,118 @@ En general, existen dos tipos de funciones matemáticas:
 		f_n y^n + f_{n-1} y^{n-1} + ... + f_1 y + f_0 = 0
 	\]
 
-	Donde cada \(f_i (i = 0, 1, ..., n)\) es un polinomio.
+	Donde cada \(f_i (i = 0, 1, ..., n)\) es un polinomio de la forma:
+
+	\[
+		f_i = a_{in} X^i + a_{i(n-1)} x^{i-1} + ... + a_{i1} x + a_{i0}
+	\]
 \end{definition}
 
 \begin{definition}[Función trascendental]
 	Es aquella que no es algebraica.
 \end{definition}
+
+\begin{eg}
+	Las funciones trigonométricas, exponenciales, logarítmicas, las de
+	Bessel, Jacobi, Mittag Leffler, entre muchas otras, son trascendentes.
+	Por ejemplo, el logaritmo natural se puede definir así:
+
+	\[
+		\boxed{\ln(x) = \int_1^x \frac{d \tau}{\tau}, x > 0}
+	\]
+
+\end{eg}
+
+Solucionar ecuaciones algebraicas o trascendentes implica el uso de dos tipos de
+métodos numéricos: los métodos cerrados y los métodos abiertos. Los primeros
+utilizan dos valores que encierran a la raíz, mientras que los segundos sólo
+uno.
+
+\section{Métodos cerrados}
+
+Este tipo de métodos aprovecha el cambio de signo que se presenta cuando una
+función pasa a través del eje de las abscisas para detectar una raíz. Se les
+conoce por ese nombre porque necesitan un intervalo cerrado que contenga a la
+raíz. Un método cerrado muy sencillo es el \textbf{método de bisección}.
+
+\subsection{Método de bisección}
+
+En general, si $f(x)$ es una función real y continua en el intervalo $[x_l,
+x_u]$ y además $f(x_l)$ y $f(x_u)$ tienen signos opuestos, \textit{i.e.}
+$f(x_l) f(xu) < 0$, se sabe que \textbf{existe al menos una raíz entre $x_l$ y
+$x_u$}.
+
+El método consiste en dividir el intervalo original a la mitad (hacer una
+bisección) y descartar aquella mitad donde no haya raíces. El proceso se repite
+tantas veces como sea necesario hasta que el intervalo sea, en términos
+prácticos, un sólo punto: la raíz buscada. Es un \textit{binary search de
+raíces}.
+
+\subsubsection{Algoritmo para el método de bisección}
+
+\begin{enumerate}
+	
+	\item Elija el intervalo que encierra la raíz, es decir, $[x_l, x_u]$.
+		Verifique que $f(x_l)f(x_u) < 0$.
+
+	\item Obtenga la aproximación de la raíz con $x_r \approx \frac{x_l +
+		x_u}{2}$
+
+	\item Para determinar el nuevo sub-intervalo, evalúe:
+		\begin{itemize}
+			\item Si $f(x_l)f(x_r) < 0$, entonces la raíz debe
+				encontrarse en el intervalo $[x_l, x_r]$. El
+				algoritmo se seguirá ejecutando de manera
+				recursiva.
+			\item Si $f(x_l)f(x_r) > 0$, entonces la raíz debe
+				encontrarse en el intervalo $[x_r, x_u]$. El
+				algoritmo se seguirá ejecutando de manera
+				recursiva.
+
+			\item Si $f(x_l) f(x_r) = 0$, entonces $x_r$ es la raíz
+				buscada, o
+				\[
+					\varepsilon_a < \varepsilon_s
+				\]
+
+				Donde $\varepsilon_a$ es el \textbf{error relativo
+				aproximado} y $\varepsilon_s$ es la
+				\textbf{tolerancia} (\textit{sufferance})
+				prefijada.
+		\end{itemize}
+\end{enumerate}
+
+Pocas veces se conoce a priori el valor de la raíz real. Por ello, se
+debe definir una aproximación mediante el error relativo aproximado:
+
+\[
+	\varepsilon_a = \left| \frac{x_i - x_{i-1}}{x_i} \right| \times 100\%
+\]
+
+Una fórmula comúnmente usada para la elegir una tolerancia en cálculos numéricos
+donde se quiere garantizar un número $n$ de cifras significativas es la
+siguiente:
+
+\[
+	\varepsilon_s = 0.5 \times 10^{2-n} \%
+\]
+
+\begin{ex}
+
+	Encuentre la raíz de la ecuación \ref{primer-problema}:
+
+	\[
+		x^2 - 4 - sin(x) = 0
+	\]
+
+	\begin{solution}
+		Tomando $f(x) = x^2 - 4 - sin(x)$, uno puede utilizar un
+		lenguaje de programación para implementarel algoritmo ya
+		descrito.
+
+		\lstinputlisting[language=Fortran, caption=Implementación del
+		método de bisección en Fotran,
+		label={lst:bisect-fortran}]{./programas/metodo-biseccion/biseccion.f90}
+	\end{solution}
+	
+\end{ex}
