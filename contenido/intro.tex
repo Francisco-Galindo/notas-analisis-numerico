@@ -120,7 +120,7 @@ utilizadas durante el curso.
 \section{Tipos de errores}
 
 Al realizar procesos numéricos, es necesario determinar una condición de
-parada, un \emph{treshold} para cuando el resultado sea exacto con
+parada, un \emph{threshold} para cuando el resultado sea exacto con
 cierta precisión. Los siguientes conceptos serán útiles para denotar
 estas condiciones de detención:
 
@@ -432,7 +432,7 @@ aplicada, dentro de donde destacan las siguientes:
 	\end{center}
 
 	De los resultados anteriores puede concluirse que la aproximación
-	semianalítica es aceptable.
+	semi-analítica es aceptable.
 	\end{solution}
 
 \end{ex}
@@ -493,12 +493,12 @@ aplicada, dentro de donde destacan las siguientes:
 		f'(2) =11.56898065039286
 	\end{equation*}
 
-	Calcule la derivada numérica aciendo progresivamente pequeño a $h$.
+	Calcule la derivada numérica haciendo progresivamente pequeño a $h$.
 	Obtenga una gráfica $\log h - \log \varepsilon_T$.
 
 	\begin{solution}[Mediante un programa de Fortran]
 
-		El siguiente código evalua la derivada con diferencias finitas:
+		El siguiente código evalúa la derivada con diferencias finitas:
 
 		\lstinputlisting[language=Fortran]{./programas/derivada-diferencias-finitas/derivada-simple.f90}
 
@@ -530,7 +530,7 @@ de Taylor multivariables resultan de gran utilidad.
 	punto $ \overline{a} = (a_1, a_2, ..., a_n)$ es:
 
 	\begin{align*}
-		f = & f(x_1, x_2, ..., x_n) = f(a_1, a_2, ..., a_n) + \\ 
+		f = & \ f(x_1, x_2, ..., x_n) = f(a_1, a_2, ..., a_n) + \\ 
 		    & + \sum_{k=1}^{n} \
 		    \frac{\partial f(a_1,a_2,...,a_n)}{\partial x_k}(x_k-a_k)\\
 		    & + \frac{1}{2!} \sum_{j=1}^{n} \sum_{k=1}^{n} \
@@ -547,10 +547,10 @@ incertidumbre en una función multivariable. Si asumimos que el punto $(a_1, a_2
 ..., a_n)$ está cerca de $(x_1, x_2, ..., x_n)$, es decir:
 
 \begin{align*}
-	x_1 - a_1 < 1 \\
-	x_2 - a_2 < 1 \\
-	\vdots \\
-	x_n - a_n < 1
+    x_1 - a_1 &< 1 \\
+    x_2 - a_2 &< 1 \\
+              &\vdots \\
+    x_n - a_n &< 1
 \end{align*}
 
 Puede simplificarse \ref{eq:def-taylor-multi} a sus términos de primer orden:
@@ -568,13 +568,13 @@ desigualdad del Minkowski: $|a_1 + a_2 + ... + a_3| \leq |a_1| + |a_2| + ... +
 \textit{desigualdad del triángulo}.}:
 
 \begin{equation} \label{eq:desigualdad-tri-taylor}
-	\Delta f \leq f(\overline{a}) + \sum_{k=1}^{n} \left |\ 
+	\Delta f \leq \sum_{k=1}^{n} \left |\ 
 		\frac{\partial f(\overline{a})}{\partial x_k} \right| \
 		\Delta x_k
 \end{equation}
 
 Es la ecuación \ref{eq:desigualdad-tri-taylor} la que proporcionará las
-incertidumbres de cada una de las variables $x_i \forall i \in N, i \leq n$.
+incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
 
 \begin{ex}
 
@@ -625,7 +625,7 @@ incertidumbres de cada una de las variables $x_i \forall i \in N, i \leq n$.
 
 \begin{ex}
 	
-	Se desea determinar la energia cinética de una partícula, la cual se
+	Se desea determinar la energía cinética de una partícula, la cual se
 	calcula con la siguiente expresión:
 
 	\begin{equation*}

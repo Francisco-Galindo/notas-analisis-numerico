@@ -123,11 +123,11 @@ siguiente:
 
 	\begin{solution}
 		Tomando $f(x) = x^2 - 4 - sin(x)$, uno puede utilizar un
-		lenguaje de programación para implementarel algoritmo ya
+		lenguaje de programación para implementar el algoritmo ya
 		descrito.
 
 		\lstinputlisting[language=Fortran, caption=Implementación del
-		método de bisección en Fotran.,
+		método de bisección en Fortran.,
 		label={lst:bisect-fortran}]{./programas/metodo-biseccion/biseccion.f90}
 
 		\lstinputlisting[language=Go, caption=Implementación del
@@ -194,7 +194,7 @@ recursiva:
 		programa de computadora de la siguiente manera:
 
 		\lstinputlisting[language=Fortran, caption=Implementación del
-		método de la falsa posición en Fotran.,
+		método de la falsa posición en Fortran.,
 		label={lst:false-fortran}]{./programas/metodo-falsa-posicion/falsa.f90}
 
 		\lstinputlisting[language=Go, caption=Implementación del
@@ -203,7 +203,7 @@ recursiva:
 	\end{solution}
 \end{ex}
 
-Obvserve que el método de la falsa posición, converge, por lo general, más
+Observe que el método de la falsa posición, converge, por lo general, más
 rápido que el método de bisección. Lo anterior se debe a que, dependiendo de la
 naturaleza de $f(x)$, en ocasiones se descarta el intervalo más grande.
 
@@ -308,7 +308,7 @@ espiral de donde surge el nombre ``función contraída''
 	\end{align*}
 
 	\lstinputlisting[language=Fortran, caption=Código para obtener el
-	diagrama de bifurcación mediante el método de punto fijo en Fotran.,
+	diagrama de bifurcación mediante el método de punto fijo en Fortran.,
 	label={lst:bifurc-fortran}]{./programas/bifurcacion/bifurcacion-logistica.f90}
 
 	\begin{figure}
@@ -358,7 +358,7 @@ ahí se obtiene la siguiente relación de recurrencia
 			f'(x) = 3x^2 + 2x + \frac{1}{x} - 2 \sin(x)
 		\]
 
-		Para encontrar el esquema correspndiente de Newton-Raphson,
+		Para encontrar el esquema correspondiente de Newton-Raphson,
 		puede usarse el siguiente esquema:
 
 		\begin{align*}
@@ -440,7 +440,7 @@ ahí se obtiene la siguiente relación de recurrencia
 
 El método de Newton-Raphson que se describió anteriormente y formulado por la
 ecuación \ref{eqn:newton} emplea una derivada en el denominador. Si la función
-cuyas raíces se quieren encontrar es dificil de derivar, puede que utilizar este
+cuyas raíces se quieren encontrar es difícil de derivar, puede que utilizar este
 método no sea ideal. En estos casos, se recurre a modificar el método para
 sustituir la derivada por un esquema numérico en diferencias finitas centradas:
 
