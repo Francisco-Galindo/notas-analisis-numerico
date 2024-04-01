@@ -1,9 +1,8 @@
 \chapter{Raíces de ecuaciones}
 
 \begin{chapquote}{Lozano, 2024}
-    ``No se preocupen si no entienden esto, yo tampoco.''
+    ``No se preocupen si no lo entienden, yo tampoco.''
 \end{chapquote}
-
 
 \section{Antecedentes matemáticos}
 
@@ -144,7 +143,7 @@ tal método es el de la \emph{falsa posición}, el cual tiene la siguiente
 ecuación recursiva:
 
 \[
-    x_r = x_u - \frac{f(x_u) (x_l-x_u)}{f(x_l) - f(x_u)}
+    \boxed{x_r = x_u - \frac{f(x_u) (x_l-x_u)}{f(x_l) - f(x_u)}}
 \]
 
 \subsubsection{Algoritmo para el método de la falsa posición}
@@ -152,33 +151,26 @@ ecuación recursiva:
 \begin{enumerate}
     
     \item Elija el intervalo que encierra la raíz, es decir, $[x_l, x_u]$.
-        Verifique que $f(x_l)f(x_u) < 0$.
+        Verifique que $f(x_l) \cdot f(x_u) < 0$.
 
-    \item Obtenga la aproximación de la raíz con:
-        \begin{equation*}
-            x_r = x_u - \frac{f(x_u)(x_l-x_u)}{f(x_l) - f(x_u)}
-        \end{equation*}
+    \item Obtenga la aproximación de la raíz con
+        \[
+            x_r \approx x_u - \frac{f(x_u)(x_l-x_u)}{f(x_l) - f(x_u)}
+        \]
 
-    \item Para determinar el nuevo sub-intervalo, evalúe:
+    \item Para determinar el nuevo sub-intervalo, revise los siguientes casos:
         \begin{itemize}
-            \item Si $f(x_l)f(x_r) < 0$, entonces la raíz debe
-                encontrarse en el intervalo $[x_l, x_r]$. El
-                algoritmo se seguirá ejecutando de manera
-                recursiva.
-            \item Si $f(x_l)f(x_r) > 0$, entonces la raíz debe
-                encontrarse en el intervalo $[x_r, x_u]$. El
-                algoritmo se seguirá ejecutando de manera
-                recursiva.
+            \item Si $f(x_l) \cdot f(x_r) < 0$, entonces la raíz debe
+                encontrarse en el intervalo $[x_l, x_r]$. El algoritmo se
+                seguirá ejecutando de manera recursiva.
 
-            \item Si $f(x_l) f(x_r) = 0$, entonces $x_r$ es la raíz
-                buscada, o
-                \[
-                    \varepsilon_a < \varepsilon_s
-                \]
+            \item Si $f(x_l) \cdot f(x_r) > 0$, entonces la raíz debe
+                encontrarse en el intervalo $[x_r, x_u]$. El algoritmo se
+                seguirá ejecutando de manera recursiva.
 
-                Donde $\varepsilon_a$ es el \emph{error relativo aproximado} y
-                $\varepsilon_s$ es la \emph{tolerancia} (\textit{sufferance})
-                prefijada.
+            \item Si $f(x_l) \cdot f(x_r) = 0$, o \(\varepsilon_a <
+                \varepsilon_s\), entonces $x_r$ es la raíz buscada.
+
         \end{itemize}
 \end{enumerate}
 
@@ -255,7 +247,11 @@ puede transformarse \ref{eqn:punto-fijo} en una relación de recurrencia:
 
         \begin{figure}
             \centering
-            \includegraphics[height=2in]{img/punto-fijo-img.png}
+            \begin{tikzpicture}
+                \begin{axis}[xmin=0, xmax=1, ymin=-0.5, ymax=1.5, axis lines=middle]
+                    \addplot[color=black, domain=0:1]{e^(-x) - x};
+                \end{axis}
+            \end{tikzpicture}
             \caption{Función $f(x) = e^{-x} - x$}
             \label{fig:ejercicio-punto-fijo}
         \end{figure}
@@ -360,6 +356,18 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
         Es buena idea obtener la gráfica de la función para poder visualizar
         las intersecciones y elegir un mejor valor inicial.
 
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[xmin=0, xmax=1, ymin=-0.5, ymax=2, axis lines=middle]
+                    \addplot[color=black, domain=0:1]{x^3 + x^2 + ln(x) + 2 * cos(deg(x))};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{Función $f(x) = x^3 + x^2 + \ln(x) + 2 \cos(x)$}
+            \label{fig:ejercicio-newton}
+        \end{figure}
+
+
         La derivada es 
 
         \[
@@ -375,8 +383,9 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
                 \cos(x)}{3x^2 + 2x + \frac{1}{x} - 2 \sin(x)}
         \end{align*}
 
-        Conociendo que la raíz está cerca de $x = 0.15$, puede utilizarse una
-        calculadora para empezar estas iteraciones. El resultado es:
+        La figura \ref{fig:ejercicio-newton}, puede verse que la raíz está
+        cerca de $x = 0.15$, puede utilizarse una calculadora para empezar
+        estas iteraciones. El resultado es:
 
         \[
             \boxed{x_r \approx 0.1349}
@@ -403,7 +412,19 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
                 1}{3(18.95)x_n^2 + 10x_n + 0.33}
         \end{align*}
 
-        Tomando como punto inicial a \(x_0 = -0.5 \), el valor de la raíz
+        \begin{figure}
+            \centering
+            \begin{tikzpicture}
+                \begin{axis}[xmin=-0.6, xmax=0.2, ymin=-0.2, ymax=1.5, axis lines=middle]
+                    \addplot[color=black, domain=-0.5:0.2]{18.95*x^3 + 5*x^2 + 0.33*x + 1};
+                \end{axis}
+            \end{tikzpicture}
+            \caption{Función $f(x) = 18.95\ x^3 + 5\ x^2 + 0.33\ x + 1$}
+            \label{fig:ejercicio-newton-2}
+        \end{figure}
+
+        Tomando en cuenta la figura \ref{fig:ejercicio-newton-2}, puede
+        elegirse como punto inicial a \(x_0 = -0.5 \), y el valor de la raíz
         llega a:
 
         \[

@@ -31,7 +31,7 @@ fórmula, permiten calcular una cantidad en función de otra.
 \begin{eg}
     
     La \emph{fórmula general} permite obtener valores exactos de las raíces de
-    un polinomio de grado dos mediante la siguiente ecuación:
+    un polinomio de segundo grado mediante la siguiente ecuación:
 
     \[
         ax^2 + bx + c = 0 \implies x = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
@@ -64,11 +64,16 @@ son fáciles de usar.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1.0\textwidth]{img/papu.png}
-        \caption{Visualización de soluciones por el método gráfico}
+        \begin{tikzpicture}
+            \begin{axis}[xmin=-3, xmax=3, ymin=-1.5, ymax=1.5, axis lines=middle]
+                \addplot[color=black, samples=8, domain=-3:3]{x^2 - 4};
+                \addplot[color=black, dashed, samples=16, domain=-3:3]{sin(deg(x))};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Visualización de soluciones por el método gráfico.}
     \end{figure}
 
-    Puede notarse así que las soluciones de la ecuación son:
+    Puede notarse así que las soluciones aproximadas de la ecuación son:
 
     \begin{align*}
         x & \approx -1.8 \\
@@ -154,8 +159,8 @@ estas condiciones de detención:
     como resultado las siguientes mediciones:
 
     \begin{eqnarray*}
-        P_{B_1} &= 3552\text{ kg}\\
-        P_{B_2} &= 3633\text{ kg}
+        P_{B_1} &= 3552\ [\si{kg}] \\
+        P_{B_2} &= 3633\ [\si{kg}]
     \end{eqnarray*}
 
     Suponiendo que la báscula 1 (\(B_1\)) es la calibrada, ¿cuál es el error
@@ -165,7 +170,7 @@ estas condiciones de detención:
         Para calcular el error, se utiliza:
 
         \begin{equation*}{
-                E_T = P_{B_1} - P_{B_2} = 3552 - 3633 = -81 \text{ kg}
+                E_T = P_{B_1} - P_{B_2} = 3552 - 3633 = -81\ [\si{kg}]
         }\end{equation*}
 
         Para calcular el error relativo, se usa:
@@ -212,22 +217,22 @@ aplicada, dentro de donde destacan las siguientes:
 
 \begin{ex}
     Obtenga la serie de Taylor de la función \(f(x) = e^x\) alrededor de \(x = 0\)
+    \begin{solution}
+
+        Empleando directamente la definición de una serie de Taylor, con \(a = 0\):
+        \[
+            e^x = e^0 + \left[\frac{de^x}{dx}\right]_{x = 0} x + \left[\frac{d^2e^x}{dx^2}\right]_{x = 0} \frac{x^2}{2!} + \left[\frac{d^3e^x}{dx^3}\right]_{x = 0} \frac{x^3}{3!} + ...
+        \]
+
+        Simplificando:
+
+        \[
+            \boxed{e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ...}
+        \]
+
+    \end{solution}
 \end{ex}
 
-\begin{solution}
-
-    Empleando directamente la definición de una serie de Taylor, con \(a = 0\):
-    \begin{equation*}{
-            e^x = e^0 + \left[\frac{de^x}{dx}\right]_{x = 0} x + \left[\frac{d^2e^x}{dx^2}\right]_{x = 0} \frac{x^2}{2!} + \left[\frac{d^3e^x}{dx^3}\right]_{x = 0} \frac{x^3}{3!} + ...
-    }\end{equation*}
-
-    Simplificando:
-
-    \begin{equation*}{
-            \boxed{e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ...}
-    }\end{equation*}
-
-\end{solution}
 
 \begin{ex}
 
@@ -238,7 +243,30 @@ aplicada, dentro de donde destacan las siguientes:
 
     \begin{figure}
         \centering
-        \includegraphics[height=3in]{img/pendulo.png}
+        \begin{tikzpicture}
+            % save length of g-vector and theta to macros
+            \pgfmathsetmacro{\Gvec}{1.5}
+            \pgfmathsetmacro{\myAngle}{30}
+            % calculate lengths of vector components
+            \pgfmathsetmacro{\Gcos}{\Gvec*cos(\myAngle)}
+            \pgfmathsetmacro{\Gsin}{\Gvec*sin(\myAngle)}
+
+            \coordinate (centro) at (0,0);
+            \draw[dashed,gray,-] (centro) -- ++ (0,-4.5) node (mary) [black,below]{$ $};
+            \draw[thick] (centro) -- ++(270+\myAngle:3) coordinate (bob);
+            \draw [blue,-stealth] (bob) -- ($(bob)!\Gcos cm!(centro)$)
+            node[midway,above right] {$T$};
+            \draw [-stealth] (bob) -- ($(bob)!-\Gcos cm!(centro)$)
+            coordinate (gcos)
+            node[midway,above right] {$mg\cos\theta$};
+            \draw [-stealth] (bob) -- ($(bob)!\Gsin cm!90:(centro)$)
+            coordinate (gsin)
+            node[midway,above left] {$mg\sin\theta$};
+            \draw [-stealth] (bob) -- ++(0,-\Gvec)
+            coordinate (g)
+            node[near end,left] {$g$};
+            \filldraw [fill=black!40,draw=black] (bob) circle[radius=0.1];
+        \end{tikzpicture}
         \caption{Diagrama de fuerzas de un péndulo simple.}
         \label{fig:pendulo}
     \end{figure}
@@ -301,8 +329,8 @@ aplicada, dentro de donde destacan las siguientes:
 
         Podemos concluir que, si el ángulo de oscilación es pequeño:
 
-       \[
-                \sin \theta \approx \theta
+        \[
+            \sin \theta \approx \theta
         \]
 
         Sustituyendo, se obtiene la versión linearizada de la ecuación
@@ -563,20 +591,20 @@ Puede simplificarse \ref{eq:def-taylor-multi} a sus términos de primer orden:
 
 \begin{align*}
     f(\overline{x}) \approx f(\overline{a}) + \sum_{k=1}^{n} \
-        \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k) \\
+    \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k) \\
     f(\overline{x}) - f(\overline{a}) \approx \sum_{k=1}^{n} \
-        \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k)
+    \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k)
 \end{align*}
 
 Tomando el valor absoluto en ambos lados \footnote{Aquí se utiliza la
-desigualdad del Minkowski: $|a_1 + a_2 + ... + a_3| \leq |a_1| + |a_2| + ... +
-|a_n|$. En el caso de dos términos, a esta desigualdad se le llama
+    desigualdad del Minkowski: $|a_1 + a_2 + ... + a_3| \leq |a_1| + |a_2| + ... +
+    |a_n|$. En el caso de dos términos, a esta desigualdad se le llama
 \textit{desigualdad del triángulo}.}:
 
 \begin{equation} \label{eq:desigualdad-tri-taylor}
     \Delta f \leq \sum_{k=1}^{n} \left |\ 
-        \frac{\partial f(\overline{a})}{\partial x_k} \right| \
-        \Delta x_k
+    \frac{\partial f(\overline{a})}{\partial x_k} \right| \
+    \Delta x_k
 \end{equation}
 
 Es la ecuación \ref{eq:desigualdad-tri-taylor} la que proporcionará las
@@ -609,8 +637,8 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
         Y, según el enunciado:
 
         \begin{align*}
-            \Delta V &= 0.3 \text{ [V]} \\
-            \Delta I &= 0.1 \text{ [A]}
+            \Delta V &= 0.3\ [\si{V}] \\
+            \Delta I &= 0.1\ [\si{A}]
         \end{align*}
 
 
@@ -620,17 +648,17 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
             \Delta P &\leq
             \left| \frac{\partial P}{\partial I} \right| \Delta I +
             \left| \frac{\partial P}{\partial V} \right| \Delta V \\
-                 &\leq \left| V \right| \Delta I + \left| I\right|
-                 \Delta V \\
-                 &\leq 127 [V](0.1 [I]) + 2 [I](0.3 [V]) \\
-            \therefore \Delta P &\leq 13.3 [W]
+                     &\leq \left| V \right| \Delta I + \left| I\right|
+                     \Delta V \\
+                     &\leq 127 [\si{V}](0.1\ [\si{I}]) + 2\ [\si{I}](0.3\ [\si{V}]) \\
+            \therefore \Delta P &\leq 13.3\ [\si{W}]
         \end{align*}
     \end{solution}
 \end{ex}
 
 
 \begin{ex}
-    
+
     Se desea determinar la energía cinética de una partícula, la cual se
     calcula con la siguiente expresión:
 
@@ -638,18 +666,19 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
         E = \frac{1}{2} m v^2
     \end{equation*}
 
-    Si se ha determinado de manera experimental que \(m = 10^{-8}\) [kg] y $v
-    = 15 [\frac{m}{s}]$, determine la energía cinética si la incertidumbre
-    de las medidas para la masa y la velocidad son de $\pm 10^{-10}$ [kg] y
-    $\pm 0.02 [\frac{m}{s}]$.
+    Si se ha determinado de manera experimental que \(m = 10^{-8} [\si{kg}]\)
+    y \(v = 15 \left[\si{ \frac{m}{s} } \right]\), determine la energía
+    cinética si la incertidumbre de las medidas para la masa y la velocidad son
+    de \(\pm 10^{-10} [\si{kg}]\) y $\pm 0.02 \left[ \si{\frac{m}{s}}
+    \right]$.
 
     \begin{solution}
 
-        Sustituyendo directamente sin las incertidumbre, la energía
-        cinética es:
+        Sustituyendo directamente sin las incertidumbres, la energía cinética
+        es:
 
         \begin{equation*}
-            E = 1.125 \times 10^{-6} \text{ [J]}
+            E = 1.125 \times 10^{-6} [\si{J}]
         \end{equation*}
 
         La función cuya incertidumbre se quiere encontrar es
@@ -663,22 +692,22 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
 
         \begin{align*}
             \Delta E &\leq \left[ \left| \frac{\partial E}{\partial m}
-            \right| \Delta m + \left| \frac{\partial E}{\partial v}
-        \right| \Delta d \right]_{m = 10^{-8}, v = 15}\\
-        %
-                 &\leq \left[ \left| \frac{v^2}{2}
-            \right| \Delta m + \left| m v \right| \Delta d 
-        \right]_{m = 10^{-8}, v = 15} \\
-        %
-                 &\leq 1.425 \times 10^{-8} \text{ [J]}
-        \end{align*}
+                \right| \Delta m + \left| \frac{\partial E}{\partial v}
+            \right| \Delta v \right]_{m = 10^{-8},\ v = 15}\\
+            %
+                     &\leq \left[ \left| \frac{v^2}{2}
+                         \right| \Delta m + \left| m v \right| \Delta v
+                     \right]_{m = 10^{-8},\ v = 15} \\
+                     %
+                     &\leq 14.25 \times 10^{-9} [\si{J}]
+            \end{align*}
 
-        Así, la energía cinética es
+            Así, la energía cinética es
 
-        \begin{center}
-            \boxed{E(m, v) = 1.125
-            \times 10^{-6} \pm 1.425 \times 10^{-8} \text{ [J]}}
-        \end{center}
+            \begin{center}
+                \boxed{E(m, v) = 1.125
+                \times 10^{-6} \pm 14.25 \times 10^{-9} [\si{J}]}
+            \end{center}
 
-    \end{solution}
-\end{ex}
+        \end{solution}
+    \end{ex}
