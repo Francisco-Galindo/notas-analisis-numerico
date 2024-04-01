@@ -350,174 +350,176 @@ aplicada, dentro de donde destacan las siguientes:
 
 \begin{ex}[Aproximación de una integral definida mediante series de Taylor]
 
-	En ocasiones, no es posible obtener la solución analítica exacta de
-	ciertas integrales, ya sea porque no existe un método o requiere de
-	tópicos más avanzados. Por ejemplo, supóngase que se tiene la siguiente
-	integral \footnote{ Resulta que esta integral sí tiene solución
-	analítica: 
-		\begin{equation*}
-		I = \left[Si(e^{x^2})\right]_{x=0}^{x=0.1}
-		\end{equation*}
-	}
+    En ocasiones, no es posible obtener la solución analítica exacta de
+    ciertas integrales, ya sea porque no existe un método o requiere de
+    tópicos más avanzados. Por ejemplo, supóngase que se tiene la siguiente
+    integral \footnote{
+        Resulta que esta integral sí tiene solución
+        analítica: 
 
-	\begin{equation}\label{ex4:1}
-		I = \int_{0}^{0.1} x \sin(e^{x^2}) dx
-	\end{equation}
+        \[
+            I = \left[Si(e^{x^2})\right]_{x=0}^{x=0.1}
+        \]
+    }
 
-	\begin{solution}
+    \begin{equation}\label{ex4:1}
+        I = \int_{0}^{0.1} x \sin(e^{x^2}) dx
+    \end{equation}
 
-	El término exponencial dentro del seno dificulta mucho la resolución de
-	la integral propuesta. A pesar de todo, puede utilizarse la serie de
-	Taylor de la función seno:
+    \begin{solution}
 
-	\begin{equation*}
-		\sin u = \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)!} u^{2n +
-		1}
-	\end{equation*}
+        El término exponencial dentro del seno dificulta mucho la resolución de
+        la integral propuesta. A pesar de todo, puede utilizarse la serie de
+        Taylor de la función seno:
 
-	Empleando esta serie dentro de \ref{ex4:1}:
+        \begin{equation*}
+            \sin u = \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)!} u^{2n +
+            1}
+        \end{equation*}
 
-	\begin{align*}
-		I &= \int_{0}^{0.1} x \sin(e^{x^2}) dx \\
-		%
-		  &= \int_{0}^{0.1} x \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n +
-		  1)!} (e^{x^2})^{2n + 1} dx \\
-		  %
-		  &= \int_{0}^{0.1} x \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n +
-		  1)!} e^{x^2(2n + 1)} dx \\
-		  %
-		  &= \sum_{n = 0}^{\infty} \int_{0}^{0.1} \frac{(-1)^n}{(2n +
-		  1)!} x e^{x^2(2n + 1)} dx \\
-		  %
-		  &= \sum_{n = 0}^{\infty} \int_{0}^{0.1} \frac{(-1)^n}{(2n +
-		  1)!} x e^{x^2(2n + 1)} dx \\
-		  %
-		  &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)!}
-		  \int_{0}^{0.1} x e^{x^2(2n + 1)} dx \\
-	\end{align*}
+        Empleando esta serie dentro de \ref{ex4:1}:
 
-	Si se hace el cambio de variable $u = (2n + 1) x^2$, $du = 2(2n + 1)x dx$:
+        \begin{align*}
+            I &= \int_{0}^{0.1} x \sin(e^{x^2}) dx \\
+            %
+              &= \int_{0}^{0.1} x \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n +
+              1)!} (e^{x^2})^{2n + 1} dx \\
+              %
+              &= \int_{0}^{0.1} x \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n +
+              1)!} e^{x^2(2n + 1)} dx \\
+              %
+              &= \sum_{n = 0}^{\infty} \int_{0}^{0.1} \frac{(-1)^n}{(2n +
+              1)!} x e^{x^2(2n + 1)} dx \\
+              %
+              &= \sum_{n = 0}^{\infty} \int_{0}^{0.1} \frac{(-1)^n}{(2n +
+              1)!} x e^{x^2(2n + 1)} dx \\
+              %
+              &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)!}
+              \int_{0}^{0.1} x e^{x^2(2n + 1)} dx \\
+        \end{align*}
 
-	\begin{align*}
-		I &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
-		  \int_{0}^{0.1} 2(2n + 1) x e^{x^2(2n + 1)} dx \\
-		  %
-		  &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
-		  \left[e^{2n + 1}x^2 \right]_{0}^{0.1}\\
-		  %
-		  &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
-		  \left[e^{0.1(2n + 1)} - 1 \right]\\
-		  %
-		  &= \frac{1}{2} \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)(2n
-		  + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]\\
-	\end{align*}
+        Si se hace el cambio de variable $u = (2n + 1) x^2$, $du = 2(2n + 1)x dx$:
 
-	En resumen, el resultado es el siguiente:
+        \begin{align*}
+            I &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
+            \int_{0}^{0.1} 2(2n + 1) x e^{x^2(2n + 1)} dx \\
+            %
+              &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
+              \left[e^{2n + 1}x^2 \right]_{0}^{0.1}\\
+              %
+              &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
+              \left[e^{0.1(2n + 1)} - 1 \right]\\
+              %
+              &= \frac{1}{2} \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)(2n
+              + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]\\
+        \end{align*}
 
-	\begin{equation*}
-		\int_{0}^{0.1} x \sin(e^{x^2}) dx = \frac{1}{2} \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)(2n + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]
-	\end{equation*}
+        En resumen, el resultado es el siguiente:
+
+        \begin{equation*}
+            \int_{0}^{0.1} x \sin(e^{x^2}) dx = \frac{1}{2} \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)(2n + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]
+        \end{equation*}
 
 
 
-	Evaluando con cuatro términos en
-	\emph{Mathematica} usando \emph{NIntegrate}, el resultado es:
+        Evaluando con cuatro términos, el resultado es:
 
-	\begin{align*}
-		\int_{0}^{0.1} x \sin(e^{x^2}) dx &\approx \frac{1}{2} \sum_{n = 0}^{3} \frac{(-1)^n}{(2n + 1)(2n + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]\\
-						  &\approx 0.00422084
-	\end{align*}
+        \begin{align*}
+            \int_{0}^{0.1} x \sin(e^{x^2}) dx &\approx \frac{1}{2} \sum_{n = 0}^{3} \frac{(-1)^n}{(2n + 1)(2n + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]\\
+                                              &\approx 0.00422084
+        \end{align*}
 
-	Puede compararse este resultado con la solución analítica:
-	%falta comparación con solución numérica de wolfram
+        Puede compararse este resultado con la solución obtenida con
+        \textit{Mathematica}:
+        %falta comparación con solución numérica de wolfram
 
-	\begin{center}
-		\boxed{\int_{0}^{0.1} x \sin(e^{x^2}) dx \approx 0.00422084}
-	\end{center}
+        \begin{center}
+            \boxed{\int_{0}^{0.1} x \sin(e^{x^2}) dx \approx 0.00422084}
+        \end{center}
 
-	De los resultados anteriores puede concluirse que la aproximación
-	semi-analítica es aceptable.
-	\end{solution}
+        De los resultados anteriores puede concluirse que la aproximación
+        semi-analítica es aceptable.
+    \end{solution}
 
 \end{ex}
 
 \begin{ex}[Determinación del orden de aproximación de un método numérico]
 
-	Es necesario definir la derivada:
+    Es necesario definir la derivada:
 
-	\begin{definition}[La derivada]
-		La definición formal de derivada de una función de una variable $f$ es
-		la siguiente:
+    \begin{definition}[La derivada]
+        La definición formal de derivada de una función de una variable $f$ es
+        la siguiente:
 
-		\begin{equation}\label{eqn:def-derivada}
-			\frac{df}{dx} = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h}
-		\end{equation}
+        \begin{equation}\label{eqn:def-derivada}
+            \frac{df}{dx} = \lim_{h \rightarrow 0} \frac{f(x + h) - f(x)}{h}
+        \end{equation}
 
-	\end{definition}
-	A partir de \ref{eqn:def-derivada}, puede aproximarse la derivada de la
-	siguiente manera:
+    \end{definition}
+    A partir de \ref{eqn:def-derivada}, puede aproximarse la derivada de la
+    siguiente manera:
 
-	\begin{equation*}
-		\frac{df}{dx} \approx \frac{f(x + h) - f(x)}{h}
-	\end{equation*}
+    \begin{equation*}
+        \frac{df}{dx} \approx \frac{f(x + h) - f(x)}{h}
+    \end{equation*}
 
-	Las aproximaciones mejoran conforme $h \rightarrow 0$. Sin embargo, no
-	dice nada de la forma en que decrece. Uno de los usos más portentosos de
-	la serie de Taylor es la obtención es la obtención de esquemas de
-	derivación de orden $n$, además de obtener un término que cuantifica el
-	orden del error. En el caso de la serie de Taylor truncada hasta el
-	término de primer orden:
+    Las aproximaciones mejoran conforme $h \rightarrow 0$. Sin embargo, no
+    dice nada de la forma en que decrece. Uno de los usos más portentosos de
+    la serie de Taylor es la obtención es la obtención de esquemas de
+    derivación de orden $n$, además de obtener un término que cuantifica el
+    orden del error. En el caso de la serie de Taylor truncada hasta el
+    término de primer orden:
 
-	\begin{equation*}
-		f(x) = f(a) + f'(a)(x-a) + O(x-a)^2
-	\end{equation*}
+    \begin{equation*}
+        f(x) = f(a) + f'(a)(x-a) + O(x-a)^2
+    \end{equation*}
 
-	$O$ indica el orden de magnitud de los términos que se desprecian. Si
-	$h = x - a$:
+    $O$ indica el orden de magnitud de los términos que se desprecian. Si
+    $h = x - a$:
 
-	\begin{equation*}
-		f(a + h) = f(a) + f'(a)h + O(h^2)
-	\end{equation*}
+    \begin{equation*}
+        f(a + h) = f(a) + f'(a)h + O(h^2)
+    \end{equation*}
 
-	Precisamente, de esta ecuación se pude despejar la primera derivada:
+    Precisamente, de esta ecuación se pude despejar la primera derivada:
 
-	\begin{equation*}
-		f'(a) = \frac{f(a + h) - f(a)}{h} + \overbrace{O(h)}^{O(h^2)/h}
-	\end{equation*}
+    \begin{equation*}
+        f'(a) = \frac{f(a + h) - f(a)}{h} + \overbrace{O(h)}^{O(h^2)/h}
+    \end{equation*}
 
-	Sabiendo esto, obtenga la derivada evaluada en $x = 2$ de la función:
+    Sabiendo esto, obtenga la derivada evaluada en $x = 2$ de la función:
 
-	\begin{equation*}
-		f(x) = 3x^2 + 2e^{-3x} + \sin x
-	\end{equation*}
+    \begin{equation*}
+        f(x) = 3x^2 + 2e^{-3x} + \sin x
+    \end{equation*}
 
-	Sabiendo que el valor exacto de la derivada es
+    Sabiendo que el valor exacto de la derivada es
 
-	\begin{equation*}
-		f'(2) =11.56898065039286
-	\end{equation*}
+    \begin{equation*}
+        f'(2) =11.56898065039286
+    \end{equation*}
 
-	Calcule la derivada numérica haciendo progresivamente pequeño a $h$.
-	Obtenga una gráfica $\log h - \log \varepsilon_T$.
+    Calcule la derivada numérica haciendo progresivamente pequeño a $h$.
+    Obtenga una gráfica $\log h - \log \varepsilon_T$.
 
-	\begin{solution}[Mediante un programa de Fortran]
+    \begin{solution}[Mediante un programa de Fortran]
 
-		El siguiente código evalúa la derivada con diferencias finitas:
+        El siguiente código evalúa la derivada con diferencias finitas:
 
-		\lstinputlisting[language=Fortran]{./programas/derivada-diferencias-finitas/derivada-simple.f90}
+        \lstinputlisting[language=Fortran]{./programas/derivada-diferencias-finitas/derivada-simple.f90}
 
-		Si se quiere mejorar poco a poco la aproximación, puede
-		utilizarse un ciclo:
+        Si se quiere mejorar poco a poco la aproximación, puede
+        utilizarse un ciclo:
 
-		\lstinputlisting[language=Fortran, caption=Programa que aproxima
-		la derivada mediante diferencias finitas cada vez menores.,
-		label={lst:derivada_logh_logepsilon}]{./programas/derivada-diferencias-finitas/derivada_logh_logepsilon.f90}
+        \lstinputlisting[language=Fortran, caption=Programa que aproxima
+        la derivada mediante diferencias finitas cada vez menores.,
+        label={lst:derivada_logh_logepsilon}]{./programas/derivada-diferencias-finitas/derivada_logh_logepsilon.f90}
 
-		A partir del código dado en \ref{lst:derivada_logh_logepsilon},
-		iterando de manera que $h$ se volviera más pequeña, pudo hacerse
-		una aproximación cada vez mejor de $f'(2)$
+        A partir del código dado en \ref{lst:derivada_logh_logepsilon},
+        iterando de manera que $h$ se volviera más pequeña, pudo hacerse
+        una aproximación cada vez mejor de $f'(2)$
 
-	\end{solution}
+    \end{solution}
 \end{ex}
 
 \section{Aproximación de errores con serie de Taylor}
@@ -529,20 +531,20 @@ de Taylor multivariables resultan de gran utilidad.
 
 \begin{definition}[Serie de Taylor multivariable]
 
-	La serie de Taylor de varias variables para una función $f$ que depende
-	de las variables $\overline{x} = (x_1, x_2, ..., x_n)$, alrededor del
-	punto $ \overline{a} = (a_1, a_2, ..., a_n)$ es:
+    La serie de Taylor de varias variables para una función $f$ que depende
+    de las variables $\overline{x} = (x_1, x_2, ..., x_n)$, alrededor del
+    punto $ \overline{a} = (a_1, a_2, ..., a_n)$ es:
 
-	\begin{align*}
-		f = & \ f(x_1, x_2, ..., x_n) = f(a_1, a_2, ..., a_n) + \\ 
-		    & + \sum_{k=1}^{n} \
-		    \frac{\partial f(a_1,a_2,...,a_n)}{\partial x_k}(x_k-a_k)\\
-		    & + \frac{1}{2!} \sum_{j=1}^{n} \sum_{k=1}^{n} \
-		    \frac{\partial^2 f(a_1,a_2,...,a_n)}{\partial x_k \partial
-		    x_j}(x_k-a_k)(x_j-a_j)\\
-		    & + ...
-	\end{align*}
-	\label{eq:def-taylor-multi}
+    \begin{align*}
+        f = & \ f(x_1, x_2, ..., x_n) = f(a_1, a_2, ..., a_n) + \\ 
+            & + \sum_{k=1}^{n} \
+            \frac{\partial f(a_1,a_2,...,a_n)}{\partial x_k}(x_k-a_k)\\
+            & + \frac{1}{2!} \sum_{j=1}^{n} \sum_{k=1}^{n} \
+            \frac{\partial^2 f(a_1,a_2,...,a_n)}{\partial x_k \partial
+            x_j}(x_k-a_k)(x_j-a_j)\\
+            & + ...
+    \end{align*}
+    \label{eq:def-taylor-multi}
 
 \end{definition}
 
@@ -560,10 +562,10 @@ incertidumbre en una función multivariable. Si asumimos que el punto $(a_1, a_2
 Puede simplificarse \ref{eq:def-taylor-multi} a sus términos de primer orden:
 
 \begin{align*}
-	f(\overline{x}) \approx f(\overline{a}) + \sum_{k=1}^{n} \
-		\frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k) \\
-	f(\overline{x}) - f(\overline{a}) \approx \sum_{k=1}^{n} \
-		\frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k)
+    f(\overline{x}) \approx f(\overline{a}) + \sum_{k=1}^{n} \
+        \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k) \\
+    f(\overline{x}) - f(\overline{a}) \approx \sum_{k=1}^{n} \
+        \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k)
 \end{align*}
 
 Tomando el valor absoluto en ambos lados \footnote{Aquí se utiliza la
@@ -572,9 +574,9 @@ desigualdad del Minkowski: $|a_1 + a_2 + ... + a_3| \leq |a_1| + |a_2| + ... +
 \textit{desigualdad del triángulo}.}:
 
 \begin{equation} \label{eq:desigualdad-tri-taylor}
-	\Delta f \leq \sum_{k=1}^{n} \left |\ 
-		\frac{\partial f(\overline{a})}{\partial x_k} \right| \
-		\Delta x_k
+    \Delta f \leq \sum_{k=1}^{n} \left |\ 
+        \frac{\partial f(\overline{a})}{\partial x_k} \right| \
+        \Delta x_k
 \end{equation}
 
 Es la ecuación \ref{eq:desigualdad-tri-taylor} la que proporcionará las
@@ -582,101 +584,101 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
 
 \begin{ex}
 
-	Suponga que una resistencia eléctrica que se usa para calentar agua se
-	alimenta a un contacto de 127 [V] y consume una corriente eléctrica de
-	2[A] (datos obtenidos con un multímetro). Si el equipo de medición
-	indica que el voltaje tiene una incertidumbre de $\pm$ 0.3 [V] t la
-	corriente $\pm$ 0.1 [A], ¿Cuál es la incertidumbre total de la medición de
-	la potencia?
+    Suponga que una resistencia eléctrica que se usa para calentar agua se
+    alimenta a un contacto de 127 [V] y consume una corriente eléctrica de
+    2[A] (datos obtenidos con un multímetro). Si el equipo de medición
+    indica que el voltaje tiene una incertidumbre de $\pm$ 0.3 [V] t la
+    corriente $\pm$ 0.1 [A], ¿Cuál es la incertidumbre total de la medición de
+    la potencia?
 
-	\begin{solution}
-		La potencia eléctrica que disipa un dispositivo eléctrico se
-		calcula mediante la siguiente expresión:
+    \begin{solution}
+        La potencia eléctrica que disipa un dispositivo eléctrico se
+        calcula mediante la siguiente expresión:
 
-		\begin{equation*}
-			P = IV
-		\end{equation*}
+        \begin{equation*}
+            P = IV
+        \end{equation*}
 
-		La incertidumbre se calcula con la misma expresión,
-		escribiéndolo de manera explícita:
+        La incertidumbre se calcula con la misma expresión,
+        escribiéndolo de manera explícita:
 
-		\begin{equation*}
-			P(I, V) = IV
-		\end{equation*}
+        \begin{equation*}
+            P(I, V) = IV
+        \end{equation*}
 
-		Y, según el enunciado:
+        Y, según el enunciado:
 
-		\begin{align*}
-			\Delta V &= 0.3 \text{ [V]} \\
-			\Delta I &= 0.1 \text{ [A]}
-		\end{align*}
+        \begin{align*}
+            \Delta V &= 0.3 \text{ [V]} \\
+            \Delta I &= 0.1 \text{ [A]}
+        \end{align*}
 
 
-		Aplicando la ecuación \ref{eq:desigualdad-tri-taylor},
+        Aplicando la ecuación \ref{eq:desigualdad-tri-taylor},
 
-		\begin{align*}
-			\Delta P &\leq
-			\left| \frac{\partial P}{\partial I} \right| \Delta I +
-			\left| \frac{\partial P}{\partial V} \right| \Delta V \\
-				 &\leq \left| V \right| \Delta I + \left| I\right|
-				 \Delta V \\
-				 &\leq 127 [V](0.1 [I]) + 2 [I](0.3 [V]) \\
-			\therefore \Delta P &\leq 13.3 [W]
-		\end{align*}
-	\end{solution}
+        \begin{align*}
+            \Delta P &\leq
+            \left| \frac{\partial P}{\partial I} \right| \Delta I +
+            \left| \frac{\partial P}{\partial V} \right| \Delta V \\
+                 &\leq \left| V \right| \Delta I + \left| I\right|
+                 \Delta V \\
+                 &\leq 127 [V](0.1 [I]) + 2 [I](0.3 [V]) \\
+            \therefore \Delta P &\leq 13.3 [W]
+        \end{align*}
+    \end{solution}
 \end{ex}
 
 
 \begin{ex}
-	
-	Se desea determinar la energía cinética de una partícula, la cual se
-	calcula con la siguiente expresión:
+    
+    Se desea determinar la energía cinética de una partícula, la cual se
+    calcula con la siguiente expresión:
 
-	\begin{equation*}
-		E = \frac{1}{2} m v^2
-	\end{equation*}
+    \begin{equation*}
+        E = \frac{1}{2} m v^2
+    \end{equation*}
 
-	Si se ha determinado de manera experimental que \(m = 10^{-8}\) [kg] y $v
-	= 15 [\frac{m}{s}]$, determine la energía cinética si la incertidumbre
-	de las medidas para la masa y la velocidad son de $\pm 10^{-10}$ [kg] y
-	$\pm 0.02 [\frac{m}{s}]$.
+    Si se ha determinado de manera experimental que \(m = 10^{-8}\) [kg] y $v
+    = 15 [\frac{m}{s}]$, determine la energía cinética si la incertidumbre
+    de las medidas para la masa y la velocidad son de $\pm 10^{-10}$ [kg] y
+    $\pm 0.02 [\frac{m}{s}]$.
 
-	\begin{solution}
+    \begin{solution}
 
-		Sustituyendo directamente sin las incertidumbre, la energía
-		cinética es:
+        Sustituyendo directamente sin las incertidumbre, la energía
+        cinética es:
 
-		\begin{equation*}
-			E = 1.125 \times 10^{-6} \text{ [J]}
-		\end{equation*}
+        \begin{equation*}
+            E = 1.125 \times 10^{-6} \text{ [J]}
+        \end{equation*}
 
-		La función cuya incertidumbre se quiere encontrar es
+        La función cuya incertidumbre se quiere encontrar es
 
-		\begin{equation*}
-			E(m, v) = \frac{1}{2} m v^2
-		\end{equation*}
+        \begin{equation*}
+            E(m, v) = \frac{1}{2} m v^2
+        \end{equation*}
 
-		La ecuación \ref{eq:desigualdad-tri-taylor} permite calcular la
-		incertidumbre:
+        La ecuación \ref{eq:desigualdad-tri-taylor} permite calcular la
+        incertidumbre:
 
-		\begin{align*}
-			\Delta E &\leq \left[ \left| \frac{\partial E}{\partial m}
-			\right| \Delta m + \left| \frac{\partial E}{\partial v}
-		\right| \Delta d \right]_{m = 10^{-8}, v = 15}\\
-		%
-				 &\leq \left[ \left| \frac{v^2}{2}
-			\right| \Delta m + \left| m v \right| \Delta d 
-		\right]_{m = 10^{-8}, v = 15} \\
-		%
-				 &\leq 1.425 \times 10^{-8} \text{ [J]}
-		\end{align*}
+        \begin{align*}
+            \Delta E &\leq \left[ \left| \frac{\partial E}{\partial m}
+            \right| \Delta m + \left| \frac{\partial E}{\partial v}
+        \right| \Delta d \right]_{m = 10^{-8}, v = 15}\\
+        %
+                 &\leq \left[ \left| \frac{v^2}{2}
+            \right| \Delta m + \left| m v \right| \Delta d 
+        \right]_{m = 10^{-8}, v = 15} \\
+        %
+                 &\leq 1.425 \times 10^{-8} \text{ [J]}
+        \end{align*}
 
-		Así, la energía cinética es
+        Así, la energía cinética es
 
-		\begin{center}
-			\boxed{E(m, v) = 1.125
-			\times 10^{-6} \pm 1.425 \times 10^{-8} \text{ [J]}}
-		\end{center}
+        \begin{center}
+            \boxed{E(m, v) = 1.125
+            \times 10^{-6} \pm 1.425 \times 10^{-8} \text{ [J]}}
+        \end{center}
 
-	\end{solution}
+    \end{solution}
 \end{ex}
