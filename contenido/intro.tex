@@ -12,63 +12,70 @@ descubrió que:
 
 \begin{quote}
     Una ecuación es soluble si y solo si, su grupo de Galois es soluble,
-    entendido por ecuación soluble aquella que puede resolverse mediante
-    operaciones elementales con radicales
+    entendiendo por ecuación soluble a aquella que puede resolverse mediante
+    operaciones elementales con radicales.
 \end{quote}
 
-Lo anterior se logró mediante la observación del grupo de permutaciones
-de \(n\) elementos, es decir \(S_n\). Él se dio cuenta de que el primer
-grupo sin soluciones es \(S_5\), por lo que ningún polinomio de grado
-mayor o igual a 5 tiene una solución exacta mediante operaciones
-simples.
+Se llegó a la anterior conclusión mediante la observación del grupo de
+permutaciones de \(n\) elementos, es decir \(S_n\). Él se dio cuenta de que el
+primer grupo sin soluciones es \(S_5\), por lo que ningún polinomio de grado
+mayor o igual a 5 tiene una solución exacta mediante operaciones simples.
 
 \section{Métodos de solución de problemas}
 
 \subsection{Métodos analíticos (exactos)}
 
 Se trata de los métodos que permiten encontrar una solución en forma de
-fórmula, permiten calcular una cantidad en función de otra. Por ejemplo:
+fórmula, permiten calcular una cantidad en función de otra.
 
-\begin{equation*}{
+\begin{eg}
+    
+    La \emph{fórmula general} permite obtener valores exactos de las raíces de
+    un polinomio de grado dos mediante la siguiente ecuación:
+
+    \[
         ax^2 + bx + c = 0 \implies x = \frac{-b \pm \sqrt{b^2 -4ac}}{2a}
-}\end{equation*}
+    \]
+\end{eg}
 
 \subsection{Soluciones gráficas (cualitativas)}
 
 Se utilizan para aproximar una solución de manera visual. No son precisas, pero
-son fáciles de usar. Si se quieren encontrar las raíces de la siguiente
-ecuación:
+son fáciles de usar.
 
-\begin{equation}\label{primer-problema}
+\begin{eg}
+    Si se quieren encontrar las raíces de la siguiente
+    ecuación:
+
+    \begin{equation}\label{primer-problema}
         x^2 - 4 - sin(x) = 0
-\end{equation}
+    \end{equation}
 
-A primera vista no resulta posible (no lo es) hacer despejes para
-encontrar los valores de \(x\) que satisfacen la ecuación. Sin embargo,
-si se escribe de la siguiente manera:
+    A primera vista no resulta posible (no lo es) hacer despejes para
+    encontrar los valores de \(x\) que satisfacen la ecuación. Sin embargo,
+    si se escribe de la siguiente manera:
 
-\begin{equation*}{
+    \[
         \underbrace{x^2 - 4}_{f(x)} = \underbrace{sin(x)}_{g(x)}
-}\end{equation*}
+    \]
 
-Lo anterior permite tener una idea intuitiva de las raíces como las
-intersecciones entre las gráficas de las funciones \(f(x)\) y \(g(x)\):
+    Lo anterior permite tener una idea intuitiva de las raíces como las
+    intersecciones entre las gráficas de las funciones \(f(x)\) y \(g(x)\):
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{img/papu.png}
-    \caption{Visualización de soluciones por el método gráfico}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\textwidth]{img/papu.png}
+        \caption{Visualización de soluciones por el método gráfico}
+    \end{figure}
 
-Puede notarse así que las soluciones de la ecuación son:
+    Puede notarse así que las soluciones de la ecuación son:
 
-\begin{equation*}{
-        x \approx -1.8
-}\end{equation*}
+    \begin{align*}
+        x & \approx -1.8 \\
+        x & \approx 2.1
+    \end{align*}
 
-\begin{equation*}{
-        x \approx 2.1
-}\end{equation*}
+\end{eg}
 
 \subsection{Métodos numéricos}
 
@@ -77,13 +84,10 @@ la conversión del problema original utilizando operaciones aritméticas
 básicas. En teoría, el resultado es tan bueno como se desee. Para el
 ejemplo anterior, usando \emph{GNU Octave}, los resultados son:
 
-\begin{equation*}{
-        x \approx -1.7360
-}\end{equation*}
-
-\begin{equation*}{
-        x \approx 2.1937
-}\end{equation*}
+\begin{align*}
+    x & \approx -1.7360 \\
+    x & \approx 2.1937
+\end{align*}
 
 \section{Exactitud y error}
 
@@ -167,7 +171,7 @@ estas condiciones de detención:
         Para calcular el error relativo, se usa:
 
         \begin{center}
-            \boxed{\varepsilon_T = \left| \frac{P_{B_1} - P_{B)_2}}{P_{B_1}} \right| * 100\% = 2.28\%}
+            \boxed{\varepsilon_T = \left| \frac{P_{B_1} - P_{B_2}}{P_{B_1}} \right| * 100\% = 2.28\%}
         \end{center}
 
     \end{solution}
@@ -297,9 +301,9 @@ aplicada, dentro de donde destacan las siguientes:
 
         Podemos concluir que, si el ángulo de oscilación es pequeño:
 
-        \begin{equation*}{
+       \[
                 \sin \theta \approx \theta
-        }\end{equation*}
+        \]
 
         Sustituyendo, se obtiene la versión linearizada de la ecuación
         diferencial:
@@ -314,9 +318,9 @@ aplicada, dentro de donde destacan las siguientes:
 
         La solución analítica de la ecuación anterior es:
 
-        \begin{equation*}{
-                \boxed{\theta_{\text{lineal}} = \frac{1}{20} \pi \cos(\sqrt{\frac{g}{l}} t)}
-        }\end{equation*}
+        \[
+            \boxed{\theta_{\text{lineal}} = \frac{1}{20} \pi \cos \left( \sqrt{\frac{g}{l}} t \right)}
+        \]
 
     \end{solution}
 

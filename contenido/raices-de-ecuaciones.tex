@@ -39,66 +39,64 @@ En general, existen dos tipos de funciones matemáticas:
 
 \end{eg}
 
-Solucionar ecuaciones algebraicas o trascendentes implica el uso de dos tipos de
-métodos numéricos: los métodos cerrados y los métodos abiertos. Los primeros
-utilizan dos valores que encierran a la raíz, mientras que los segundos sólo
-uno.
+Solucionar ecuaciones algebraicas o trascendentes implica el uso de dos tipos
+de métodos numéricos: los métodos cerrados y los métodos abiertos. Los primeros
+utilizan dos valores que encierran a la raíz entre dos valores, mientras que
+los segundos sólo acotan con un valor.
 
 \section{Métodos cerrados}
 
 Este tipo de métodos aprovecha el cambio de signo que se presenta cuando una
 función pasa a través del eje de las abscisas para detectar una raíz. Se les
 conoce por ese nombre porque necesitan un intervalo cerrado que contenga a la
-raíz. Un método cerrado muy sencillo es el \textbf{método de bisección}.
+raíz. Un método cerrado muy sencillo, y el primero que será revisado en esta
+sección, es el \emph{método de bisección}.
 
 \subsection{Método de bisección}
 
 En general, si $f(x)$ es una función real y continua en el intervalo $[x_l,
-x_u]$ y además $f(x_l)$ y $f(x_u)$ tienen signos opuestos, \textit{i.e.}
-$f(x_l) f(xu) < 0$, se sabe que \textbf{existe al menos una raíz entre $x_l$ y
-$x_u$}.
+x_u]$ \footnote{Aquí, $l$ y $u$ vienen de la palabras inglesas \textit{lower} y
+\textit{upper}.} y además $f(x_l)$ y $f(x_u)$ tienen signos opuestos,
+\textit{i.e.} $f(x_l) \cdot f(xu) < 0$, se sabe que \emph{existe al menos una
+raíz entre $x_l$ y $x_u$}.
 
 El método consiste en dividir el intervalo original a la mitad (hacer una
 bisección) y descartar aquella mitad donde no haya raíces. El proceso se repite
 tantas veces como sea necesario hasta que el intervalo sea, en términos
-prácticos, un sólo punto: la raíz buscada. Es un \textit{binary search de
-raíces}.
+prácticos, un sólo punto: la raíz buscada. Este método para encontrar raíces se
+parece al algoritmo \textit{binary search} para encontrar un valor dado entre
+una lista de valores.
 
 \subsubsection{Algoritmo para el método de bisección}
 
 \begin{enumerate}
 	
 	\item Elija el intervalo que encierra la raíz, es decir, $[x_l, x_u]$.
-		Verifique que $f(x_l)f(x_u) < 0$.
+		Verifique que $f(x_l) \cdot f(x_u) < 0$.
 
 	\item Obtenga la aproximación de la raíz con $x_r \approx \frac{x_l +
 		x_u}{2}$
 
-	\item Para determinar el nuevo sub-intervalo, evalúe:
+	\item Para determinar el nuevo sub-intervalo, revise los siguientes casos:
 		\begin{itemize}
-			\item Si $f(x_l)f(x_r) < 0$, entonces la raíz debe
-				encontrarse en el intervalo $[x_l, x_r]$. El
-				algoritmo se seguirá ejecutando de manera
-				recursiva.
-			\item Si $f(x_l)f(x_r) > 0$, entonces la raíz debe
-				encontrarse en el intervalo $[x_r, x_u]$. El
-				algoritmo se seguirá ejecutando de manera
-				recursiva.
+            \item Si $f(x_l) \cdot f(x_r) < 0$, entonces la raíz debe
+                encontrarse en el intervalo $[x_l, x_r]$. El algoritmo se
+                seguirá ejecutando de manera recursiva.
 
-			\item Si $f(x_l) f(x_r) = 0$, entonces $x_r$ es la raíz
-				buscada, o
-				\[
-					\varepsilon_a < \varepsilon_s
-				\]
+            \item Si $f(x_l) \cdot f(x_r) > 0$, entonces la raíz debe
+                encontrarse en el intervalo $[x_r, x_u]$. El algoritmo se
+                seguirá ejecutando de manera recursiva.
 
-				Donde $\varepsilon_a$ es el \textbf{error relativo
-				aproximado} y $\varepsilon_s$ es la
-				\textbf{tolerancia} (\textit{sufferance})
-				prefijada.
-		\end{itemize}
+            \item Si $f(x_l) \cdot f(x_r) = 0$, o \(\varepsilon_a <
+                \varepsilon_s\), entonces $x_r$ es la raíz buscada. Aquí,
+                $\varepsilon_a$ es el \emph{error relativo aproximado} y
+                $\varepsilon_s$ es la \emph{tolerancia} (\textit{sufferance})
+                prefijada.
+
+        \end{itemize}
 \end{enumerate}
 
-Pocas veces se conoce a priori el valor de la raíz real. Por ello, se
+Pocas veces se conoce \textit{a priori} el valor de la raíz real. Por ello, se
 debe definir una aproximación mediante el error relativo aproximado:
 
 \[
@@ -140,10 +138,10 @@ siguiente:
 \subsection{Método de la falsa posición}
 
 Como se vio anteriormente, el método de bisección es bastante útil para hallar
-raíces de ecuaciones el cual únicamente usa fuerza bruta. \textbf{No obstante,
-su tiempo de cómputo en comparación de otros métodos es alto}. Una alternativa a
-tal método es el de la \textbf{falsa posición}, el cual tiene la siguiente ecuación
-recursiva:
+raíces de ecuaciones el cual únicamente usa fuerza bruta. \emph{No obstante, su
+tiempo de cómputo en comparación de otros métodos es alto}. Una alternativa a
+tal método es el de la \emph{falsa posición}, el cual tiene la siguiente
+ecuación recursiva:
 
 \[
 	x_r = x_u - \frac{f(x_u) (x_l-x_u)}{f(x_l) - f(x_u)}
@@ -178,10 +176,9 @@ recursiva:
 					\varepsilon_a < \varepsilon_s
 				\]
 
-				Donde $\varepsilon_a$ es el \textbf{error relativo
-				aproximado} y $\varepsilon_s$ es la
-				\textbf{tolerancia} (\textit{sufferance})
-				prefijada.
+                Donde $\varepsilon_a$ es el \emph{error relativo aproximado} y
+                $\varepsilon_s$ es la \emph{tolerancia} (\textit{sufferance})
+                prefijada.
 		\end{itemize}
 \end{enumerate}
 
@@ -203,8 +200,8 @@ recursiva:
 	\end{solution}
 \end{ex}
 
-Observe que el método de la falsa posición, converge, por lo general, más
-rápido que el método de bisección. Lo anterior se debe a que, dependiendo de la
+Observe que el método de la falsa posición converge, por lo general, más rápido
+que el método de bisección. Lo anterior se debe a que, dependiendo de la
 naturaleza de $f(x)$, en ocasiones se descarta el intervalo más grande.
 
 
@@ -220,21 +217,21 @@ Este es uno de los métodos más simples. Si se quiere encontrar la raíz de una
 función $f(x)$ donde se puede despejar alguna $x$, se puede obtener una
 relación de recurrencia para calcular las raíces:
 
-\begin{equation}\label{pape}
+\begin{equation}\label{eqn:punto-fijo}
 	f(x) = 0 \implies \boxed{x = g(x)}
 \end{equation}
 
-Si, eligiendo un dominio $D$ donde exista la raíz,
+Si, eligiendo un dominio $D$ donde exista la raíz, se cumple que
 
 \[
 	\left| g'(x) \right| < 1 \land x \in D
 \]
 
-puede transformarse \ref{pape} en una relación de recurrencia:
+puede transformarse \ref{eqn:punto-fijo} en una relación de recurrencia:
 
-\[
-	x_{i+1} = g(x_i)
-\]
+\begin{equation} \label{eqn:recurrencia-punto-fijo}
+    \boxed{x_{i+1} = g(x_i)}
+\end{equation}
 
 \begin{ex}
 	Use el método de iteración de punto fijo para encontrar las raíces de la
@@ -251,23 +248,25 @@ puede transformarse \ref{pape} en una relación de recurrencia:
 			f(x) = e^{-x} - x = 0 \implies x = e^{-x} = g(x)
 		\]
 
-		Teniendo en cuenta la gráfica de la función, la raíz es
-		aproximadamente $x_r \approx 0.6$, por lo que pude verificarse
-		que la derivada tiene magnitud menor a uno:
+        Teniendo en cuenta la gráfica de la función en la figura
+        \ref{fig:ejercicio-punto-fijo}, la raíz es aproximadamente $x_r \approx
+        0.6$, por lo que puede verificarse que la derivada tiene magnitud menor
+        a uno:
 
 		\begin{figure}
 			\centering
 			\includegraphics[height=2in]{img/punto-fijo-img.png}
 			\caption{Función $f(x) = e^{-x} - x$}
+            \label{fig:ejercicio-punto-fijo}
 		\end{figure}
 
 		\[
-			|g'(x)| = |-e^{-x}| e^{-x} = \frac{1}{e^x} < 1 \forall x \in (0,
+			|g'(x)| = |-e^{-x}| e^{-x} = \frac{1}{e^x} < 1\ \forall x \in (0,
 			\infty)
 		\]
 
-		Como la condición se satisface, puede escribirse la ecuación de
-		recurrencia
+        Como la condición se satisface, puede escribirse la siguiente ecuación
+        de recurrencia basándose en \ref{eqn:recurrencia-punto-fijo}:
 
 		\[
 			x_{i+1} = e^{-x_i}
@@ -299,8 +298,8 @@ espiral de donde surge el nombre ``función contraída''
 		x_{n+1} = r x_n (1 - x_n)
 	\]
 
-	Esta ecuación es conocida como la \textbf{ecuación logística}, que tiene
-	su origen en la dinámica de poblaciones, los términos son:
+    Esta ecuación es conocida como la \emph{ecuación logística}, que tiene su
+    origen en la dinámica de poblaciones, los términos son:
 
 	\begin{align*}
 		rx_n &= \text{taza de nacimientos} \\
@@ -330,14 +329,23 @@ El esquema de Newton-Raphson se obtiene a partir de la serie de Taylor truncada
 a términos de primer orden,
 
 \[
-	f(x_{x+1}) \approx f(x_n) + f'(x_n)(x_{n+1} - x_n)
+	f(x) \approx f(x_0) + f'(x_0)(x - x_0)
 \]
 
-Como $x_{n+1}$ es una raíz, se deduce que $f(x_{n+1}) \approx 0$ y a partir de
-ahí se obtiene la siguiente relación de recurrencia
+Si la ecuación
+
+\begin{equation}
+    f(x_0) + f'(x_0) (x - x_0) = 0 \label{eqn:newton-aprox}
+\end{equation}
+
+Tiene una solución $x = x_r$, puede concluirse que $f(x_r) \approx 0$. Si la
+función ``se porta bien'', repetir este proceso llevará a valores de $x_r$ cada
+vez más cercanos a la raíz verdarera. Despejando $x$ de \ref{eqn:newton-aprox},
+se obtiene la siguiente relación de recurrencia para obtener aproximaciones de
+la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
 
 \begin{equation}\label{eqn:newton}
-	x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+    \boxed{x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}}
 \end{equation}
 
 \begin{ex}
@@ -349,8 +357,8 @@ ahí se obtiene la siguiente relación de recurrencia
 
 	\begin{solution}
 
-		Es buena idea obtener la gráfica de la función para ppoder
-		visualizar las intersecciones y elegir un mejor valor inicial.
+        Es buena idea obtener la gráfica de la función para poder visualizar
+        las intersecciones y elegir un mejor valor inicial.
 
 		La derivada es 
 
@@ -358,8 +366,8 @@ ahí se obtiene la siguiente relación de recurrencia
 			f'(x) = 3x^2 + 2x + \frac{1}{x} - 2 \sin(x)
 		\]
 
-		Para encontrar el esquema correspondiente de Newton-Raphson,
-		puede usarse el siguiente esquema:
+        Para encontrar la relación de recurrencia correspondiente de
+        Newton-Raphson, puede usarse el siguiente esquema:
 
 		\begin{align*}
 			x_{n+1} &= x_n - \frac{f(x_n)}{f'(x_n)} \\
@@ -367,7 +375,7 @@ ahí se obtiene la siguiente relación de recurrencia
 				\cos(x)}{3x^2 + 2x + \frac{1}{x} - 2 \sin(x)}
 		\end{align*}
 
-		Conociendo que la raíz está cerca de 0.15, puede utilizarse una
+		Conociendo que la raíz está cerca de $x = 0.15$, puede utilizarse una
 		calculadora para empezar estas iteraciones. El resultado es:
 
 		\[
@@ -402,10 +410,10 @@ ahí se obtiene la siguiente relación de recurrencia
 			\boxed{x_{r_1} \approx -0.4677830945}
 		\]
 
-		Conociéndose esta raíz, puede utilizarse división sintética para
-		crear una aproximación de polinomio de segundo grado cuyas
-		raíces pueden ser calculadas con la fórmula general. A este
-		proceso se le conoce como \textit{deflación polinomial}:
+        Conociéndose la aproximación para una de las raíces, puede utilizarse
+        división sintética para aproximar un polinomio de segundo grado cuyas
+        raíces pueden ser calculadas con la fórmula general. A este proceso se
+        le conoce como \textit{deflación polinomial}:
 
 		\begin{center}
 			\begin{tabular}{ c | c c c c }
@@ -419,16 +427,16 @@ ahí se obtiene la siguiente relación de recurrencia
 		Se obtiene el polinomio 
 
 		\[
-			18.95x^2 - 3.8644896x + 2.13774292
+			18.95\ x^2 - 3.8644896\ x + 2.13774292
 		\]
-
-		Que puede solucionarse con la fórmula general, obteniendo las
+    
+        Cuyas raíces pueden encontrarse con la fórmula general, obteniendo las
 		raíces faltantes:
 
 		\begin{align*}
-			x_{r_1} &= -0.467783 \\
-			x_{r_2} &= 0.1019 + 0.32001 i \\
-			x_{r_3} &= 0.1019 - 0.32001 i 
+			x_{r_1} & \approx -0.4677831 \\
+			x_{r_2} & \approx 0.1019 + 0.32001\ i \\
+			x_{r_3} & \approx 0.1019 - 0.32001\ i 
 		\end{align*}
 	\end{solution}
 
