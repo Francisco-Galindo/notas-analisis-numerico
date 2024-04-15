@@ -44,16 +44,14 @@ Se utilizan para aproximar una solución de manera visual. No son precisas, pero
 son fáciles de usar.
 
 \begin{eg}
-    Si se quieren encontrar las raíces de la siguiente
-    ecuación:
-
+    Si se quieren encontrar las raíces de la ecuación
     \begin{equation}\label{primer-problema}
-        x^2 - 4 - sin(x) = 0
+        x^2 - 4 - sin(x) = 0,
     \end{equation}
 
-    A primera vista no resulta posible (no lo es) hacer despejes para
-    encontrar los valores de \(x\) que satisfacen la ecuación. Sin embargo,
-    si se escribe de la siguiente manera:
+    \noindent no resulta posible, a primera vista, hacer despejes para
+    encontrar los valores de \(x\) que satisfacen la ecuación. Sin embargo, si
+    se escribe de la siguiente manera:
 
     \[
         \underbrace{x^2 - 4}_{f(x)} = \underbrace{sin(x)}_{g(x)}
@@ -66,15 +64,14 @@ son fáciles de usar.
         \centering
         \begin{tikzpicture}
             \begin{axis}[xmin=-3, xmax=3, ymin=-1.5, ymax=1.5, axis lines=middle]
-                \addplot[color=black, samples=8, domain=-3:3]{x^2 - 4};
-                \addplot[color=black, dashed, samples=16, domain=-3:3]{sin(deg(x))};
+                \addplot[color=black, domain=-3:3]{x^2 - 4};
+                \addplot[color=black, dashed, domain=-3:3]{sin(deg(x))};
             \end{axis}
         \end{tikzpicture}
         \caption{Visualización de soluciones por el método gráfico.}
     \end{figure}
 
     Puede notarse así que las soluciones aproximadas de la ecuación son:
-
     \begin{align*}
         x & \approx -1.8 \\
         x & \approx 2.1
@@ -88,7 +85,6 @@ Son aproximaciones a soluciones de un problema. Generalmente se basa en
 la conversión del problema original utilizando operaciones aritméticas
 básicas. En teoría, el resultado es tan bueno como se desee. Para el
 ejemplo anterior, usando \emph{GNU Octave}, los resultados son:
-
 \begin{align*}
     x & \approx -1.7360 \\
     x & \approx 2.1937
@@ -108,7 +104,6 @@ utilizadas durante el curso.
 
 \begin{eg}
     Un ejemplo es esta secuencia de aproximaciones progresivamente más exactas:
-
     \begin{align*} 
         \pi &\approx 3 \\ 
             &\approx 3.1 \\ 
@@ -167,17 +162,15 @@ estas condiciones de detención:
     absoluto y relativo de la segunda báscula?
 
     \begin{solution}
-        Para calcular el error, se utiliza:
+        Para calcular el error, se utiliza
+        \[
+            E_T = P_{B_1} - P_{B_2} = 3552 - 3633 = -81\ [\si{kg}]
+        \]
 
-        \begin{equation*}{
-                E_T = P_{B_1} - P_{B_2} = 3552 - 3633 = -81\ [\si{kg}]
-        }\end{equation*}
-
-        Para calcular el error relativo, se usa:
-
-        \begin{center}
+        \noindent y, para calcular el error relativo, se usa:
+        \[
             \boxed{\varepsilon_T = \left| \frac{P_{B_1} - P_{B_2}}{P_{B_1}} \right| * 100\% = 2.28\%}
-        \end{center}
+        \]
 
     \end{solution}
 
@@ -206,7 +199,6 @@ aplicada, dentro de donde destacan las siguientes:
 
     En su versión de una sola variable, la serie de Taylor de la función $f$,
     con centro en $a$, es la siguiente:
-
     \begin{align*}
         f(x) &= f(a) + \frac{f'(a)}{1!}(x - a) + \frac{f''(a)}{2!}(x - a)^2 + ... \\
              &= \sum_{k = 0}^{\infty} \frac{f^{(k)}(a)}{k!}(x - a)^k
@@ -224,8 +216,7 @@ aplicada, dentro de donde destacan las siguientes:
             e^x = e^0 + \left[\frac{de^x}{dx}\right]_{x = 0} x + \left[\frac{d^2e^x}{dx^2}\right]_{x = 0} \frac{x^2}{2!} + \left[\frac{d^3e^x}{dx^3}\right]_{x = 0} \frac{x^3}{3!} + ...
         \]
 
-        Simplificando:
-
+        \noindent y, simplificando:
         \[
             \boxed{e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + ...}
         \]
@@ -240,6 +231,9 @@ aplicada, dentro de donde destacan las siguientes:
     las únicas fuerzas actuando son la tensión de la cuerda y el peso del
     péndulo. Para escribir la posición angular del péndulo como una función del
     tiempo, uno puede apoyarse en la Segunda Ley de Newton:
+    \[
+        F = ma
+    \]
 
     \begin{figure}
         \centering
@@ -271,28 +265,22 @@ aplicada, dentro de donde destacan las siguientes:
         \label{fig:pendulo}
     \end{figure}
 
-    \begin{equation*}
-        F = ma
-    \end{equation*}
-
     Como el movimiento está restringido a una trayectoria circular, sólo es de
     interés el componente de la fuerza que es tangencial al movimiento del
     péndulo (el signo es negativo porque el ángulo siempre tiene signo
     contrario al vector de fuerza en este sistema de referencia):
-
     \begin{align*}
         F &= -mg \sin \theta\\
         a &= -g \sin \theta\\
     \end{align*}
 
-    Considerando la siguiente relación entre la aceleración tangencial $a$ y la aceleración angular $\alpha$, donde $l$ es la longitud del péndulo:
-
-    \begin{equation*}
+    Considerando la siguiente relación entre la aceleración tangencial $a$ y la
+    aceleración angular $\alpha$, donde $l$ es la longitud del péndulo:
+    \[
         \alpha = \frac{a}{l}
-    \end{equation*}
+    \]
 
     Puede llegarse a la siguiente ecuación diferencial:
-
     \begin{align*}
         l \alpha &= -g \sin \theta\\
         \alpha &= -\frac{g}{l} \sin \theta \\
@@ -303,14 +291,13 @@ aplicada, dentro de donde destacan las siguientes:
     Suponiendo que el péndulo oscila en ángulos pequeños (por ejemplo, que
     inicia desde el reposo con un ángulo de $\frac{\pi}{20}$), resuelva la
     siguiente ecuación diferencial:
-
-    \begin{equation*}{
-            \frac{d^2 \theta}{dt^2} + \frac{g}{l} \sin \theta = 0,
-            \begin{cases}
-                \theta(0) = \frac{\pi}{20}\\
-                \theta'(0) = 0
-            \end{cases}
-    }\end{equation*}
+    \[
+        \frac{d^2 \theta}{dt^2} + \frac{g}{l} \sin \theta = 0,
+        \begin{cases}
+            \theta(0) = \frac{\pi}{20}\\
+            \theta'(0) = 0
+        \end{cases}
+    \]
 
     \begin{solution}
 
@@ -320,7 +307,6 @@ aplicada, dentro de donde destacan las siguientes:
         seno mediante series de Taylor.
 
         La serie de Taylor de la función seno, con centro en 0, es la siguiente:
-
         \begin{align*}
             \sin \theta &= \theta - \frac{\theta^3}{3!} + \frac{\theta^5}{5!} - \frac{\theta^7}{7!} + ... \\  
                         &= \theta \underbrace{- \frac{\theta^3}{6} + \frac{\theta^5}{120} - \frac{\theta^7}{5040} + ...}_{\text{despreciables cuando } \theta \text{ es pequeño}} \\
@@ -328,24 +314,21 @@ aplicada, dentro de donde destacan las siguientes:
         \end{align*}
 
         Podemos concluir que, si el ángulo de oscilación es pequeño:
-
         \[
             \sin \theta \approx \theta
         \]
 
         Sustituyendo, se obtiene la versión linearizada de la ecuación
         diferencial:
-
-        \begin{equation*}{
+        \[
                 \frac{d^2 \theta}{dt^2} + \frac{g}{l} \theta = 0,
                 \begin{cases}
                     \theta(0) = \frac{\pi}{20}\\
                     \theta'(0) = 0
                 \end{cases}
-        }\end{equation*}
+        \]
 
         La solución analítica de la ecuación anterior es:
-
         \[
             \boxed{\theta_{\text{lineal}} = \frac{1}{20} \pi \cos \left( \sqrt{\frac{g}{l}} t \right)}
         \]
@@ -384,7 +367,6 @@ aplicada, dentro de donde destacan las siguientes:
     integral \footnote{
         Resulta que esta integral sí tiene solución
         analítica: 
-
         \[
             I = \left[Si(e^{x^2})\right]_{x=0}^{x=0.1}
         \]
@@ -399,14 +381,12 @@ aplicada, dentro de donde destacan las siguientes:
         El término exponencial dentro del seno dificulta mucho la resolución de
         la integral propuesta. A pesar de todo, puede utilizarse la serie de
         Taylor de la función seno:
-
-        \begin{equation*}
+        \[
             \sin u = \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)!} u^{2n +
             1}
-        \end{equation*}
+        \]
 
         Empleando esta serie dentro de \ref{ex4:1}:
-
         \begin{align*}
             I &= \int_{0}^{0.1} x \sin(e^{x^2}) dx \\
             %
@@ -426,8 +406,7 @@ aplicada, dentro de donde destacan las siguientes:
               \int_{0}^{0.1} x e^{x^2(2n + 1)} dx \\
         \end{align*}
 
-        Si se hace el cambio de variable $u = (2n + 1) x^2$, $du = 2(2n + 1)x dx$:
-
+        Si se define $u = (2n + 1) x^2$, $du = 2(2n + 1)x\ dx$:
         \begin{align*}
             I &= \sum_{n = 0}^{\infty} \frac{(-1)^n}{2(2n + 1)(2n + 1)!}
             \int_{0}^{0.1} 2(2n + 1) x e^{x^2(2n + 1)} dx \\
@@ -443,27 +422,23 @@ aplicada, dentro de donde destacan las siguientes:
         \end{align*}
 
         En resumen, el resultado es el siguiente:
-
-        \begin{equation*}
+        \[
             \int_{0}^{0.1} x \sin(e^{x^2}) dx = \frac{1}{2} \sum_{n = 0}^{\infty} \frac{(-1)^n}{(2n + 1)(2n + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]
-        \end{equation*}
-
+        \]
 
 
         Evaluando con cuatro términos, el resultado es:
-
         \begin{align*}
             \int_{0}^{0.1} x \sin(e^{x^2}) dx &\approx \frac{1}{2} \sum_{n = 0}^{3} \frac{(-1)^n}{(2n + 1)(2n + 1)!} \left[e^{0.1(2n + 1)} - 1 \right]\\
                                               &\approx 0.00422084
         \end{align*}
 
+        %falta comparación con solución numérica de wolfram
         Puede compararse este resultado con la solución obtenida con
         \textit{Mathematica}:
-        %falta comparación con solución numérica de wolfram
-
-        \begin{center}
+        \[
             \boxed{\int_{0}^{0.1} x \sin(e^{x^2}) dx \approx 0.00422084}
-        \end{center}
+        \]
 
         De los resultados anteriores puede concluirse que la aproximación
         semi-analítica es aceptable.
@@ -628,22 +603,18 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
         \end{equation*}
 
         La incertidumbre se calcula con la misma expresión,
-        escribiéndolo de manera explícita:
+        escribiéndolo de manera explícita,
+        \[
+            P(I, V) = IV,
+        \]
 
-        \begin{equation*}
-            P(I, V) = IV
-        \end{equation*}
-
-        Y, según el enunciado:
-
+        \noindent y, según el enunciado:
         \begin{align*}
             \Delta V &= 0.3\ [\si{V}] \\
             \Delta I &= 0.1\ [\si{A}]
         \end{align*}
 
-
         Aplicando la ecuación \ref{eq:desigualdad-tri-taylor},
-
         \begin{align*}
             \Delta P &\leq
             \left| \frac{\partial P}{\partial I} \right| \Delta I +
@@ -689,7 +660,6 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
 
         La ecuación \ref{eq:desigualdad-tri-taylor} permite calcular la
         incertidumbre:
-
         \begin{align*}
             \Delta E &\leq \left[ \left| \frac{\partial E}{\partial m}
                 \right| \Delta m + \left| \frac{\partial E}{\partial v}

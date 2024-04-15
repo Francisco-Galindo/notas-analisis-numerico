@@ -214,12 +214,12 @@ relación de recurrencia para calcular las raíces:
 \end{equation}
 
 Si, eligiendo un dominio $D$ donde exista la raíz, se cumple que
-
 \[
     \left| g'(x) \right| < 1 \land x \in D
 \]
 
-puede transformarse \ref{eqn:punto-fijo} en una relación de recurrencia:
+\noindent puede transformarse \ref{eqn:punto-fijo} en una relación de
+recurrencia:
 
 \begin{equation} \label{eqn:recurrencia-punto-fijo}
     \boxed{x_{i+1} = g(x_i)}
@@ -228,13 +228,14 @@ puede transformarse \ref{eqn:punto-fijo} en una relación de recurrencia:
 \begin{ex}
     Use el método de iteración de punto fijo para encontrar las raíces de la
     función:
-
     \[
         e^{-x} - x = 0
     \]
 
     \begin{solution}
-        Puede definirse lo siguiente:
+
+        Puede encontrase el esquema del método de punto fijo de la siguiente
+        forma:
 
         \[
             f(x) = e^{-x} - x = 0 \implies x = e^{-x} = g(x)
@@ -244,6 +245,11 @@ puede transformarse \ref{eqn:punto-fijo} en una relación de recurrencia:
         \ref{fig:ejercicio-punto-fijo}, la raíz es aproximadamente $x_r \approx
         0.6$, por lo que puede verificarse que la derivada tiene magnitud menor
         a uno:
+
+        \[
+            \left| g'(x) \right| = \left| -e^{-x} \right| e^{-x} =
+            \frac{1}{e^x} < 1\ \forall x \in (0, \infty)
+        \]
 
         \begin{figure}
             \centering
@@ -255,11 +261,6 @@ puede transformarse \ref{eqn:punto-fijo} en una relación de recurrencia:
             \caption{Función $f(x) = e^{-x} - x$}
             \label{fig:ejercicio-punto-fijo}
         \end{figure}
-
-        \[
-            \left| g'(x) \right| = \left| -e^{-x} \right| e^{-x} =
-            \frac{1}{e^x} < 1\ \forall x \in (0, \infty)
-        \]
 
         Como la condición se satisface, puede escribirse la siguiente ecuación
         de recurrencia basándose en \ref{eqn:recurrencia-punto-fijo}:
@@ -288,15 +289,13 @@ espiral de donde surge el nombre ``función contraída''
         x - rx(1 - x) = 0
     \]
 
-    Donde, aplicando el método de punto fijo se obtiene la relación:
-
+    \noindent donde, aplicando el método de punto fijo se obtiene la relación
     \[
         x_{n+1} = r x_n (1 - x_n)
     \]
 
     Esta ecuación es conocida como la \emph{ecuación logística}, que tiene su
     origen en la dinámica de poblaciones, los términos son:
-
     \begin{align*}
         rx_n &= \text{taza de nacimientos} \\
         (1 - x_n) &= \text{taza de mortandad}
@@ -323,22 +322,21 @@ desde el punto $(x, f(x))$ e ir acercándose progresivamente a la raíz $x_r$.
 
 El esquema de Newton-Raphson se obtiene a partir de la serie de Taylor truncada
 a términos de primer orden,
-
 \[
     f(x) \approx f(x_0) + f'(x_0)(x - x_0)
 \]
 
 Si la ecuación
-
 \begin{equation}
     f(x_0) + f'(x_0) (x - x_0) = 0 \label{eqn:newton-aprox}
 \end{equation}
 
-tiene una solución $x = x_r$, puede concluirse que $f(x_r) \approx 0$. Si la
-función ``se porta bien'', repetir este proceso llevará a valores de $x_r$ cada
-vez más cercanos a la raíz verdarera. Despejando $x$ de \ref{eqn:newton-aprox},
-se obtiene la siguiente relación de recurrencia para obtener aproximaciones de
-la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
+\noindent tiene una solución $x = x_r$, puede concluirse que $f(x_r) \approx
+0$. Si la función ``se porta bien'', repetir este proceso llevará a valores de
+$x_r$ cada vez más cercanos a la raíz verdarera. Despejando $x$ de
+\ref{eqn:newton-aprox}, se obtiene la siguiente relación de recurrencia para
+obtener aproximaciones de la raíz de $f$ a partir de algún valor inicial
+arbitrario $x_0$:
 
 \begin{equation}\label{eqn:newton}
     \boxed{x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}}
@@ -346,7 +344,6 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
 
 \begin{ex}
     Obtenga la raíz de la siguiente ecuación,
-
     \[
         f(x) = x^3 + x^2 + \ln(x) + 2 \cos(x) = 0
     \]
@@ -369,14 +366,12 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
 
 
         La derivada es 
-
         \[
             f'(x) = 3x^2 + 2x + \frac{1}{x} - 2 \sin(x)
         \]
 
         Para encontrar la relación de recurrencia correspondiente de
         Newton-Raphson, puede usarse el siguiente esquema:
-
         \begin{align*}
             x_{n+1} &= x_n - \frac{f(x_n)}{f'(x_n)} \\
                 &= x_n - \frac{x^3 + x^2 + \ln(x) + 2
@@ -385,8 +380,7 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
 
         La figura \ref{fig:ejercicio-newton}, puede verse que la raíz está
         cerca de $x = 0.15$, puede utilizarse una calculadora para empezar
-        estas iteraciones. El resultado es:
-
+        estas iteraciones. El resultado es
         \[
             \boxed{x_r \approx 0.1349}
         \]
@@ -397,7 +391,6 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
 
 \begin{ex}
     Encuentre la raíz real del polinomio 
-
     \[
         18.95x^3 + 5x^2  + 0.33x + 1 = 0
     \]
@@ -405,7 +398,6 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
     \begin{solution}
         Se aplica la fórmula \ref{eqn:newton} para aplicar el método de
         Newton-Raphson
-
         \begin{align*}
             x_{n+1} &= x_n - \frac{f(x_n)}{f'(x_n)} \\
                 &= x_n - \frac{18.95x_n^3 + 5x_n^2 + 0.33x_n +
@@ -425,8 +417,7 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
 
         Tomando en cuenta la figura \ref{fig:ejercicio-newton-2}, puede
         elegirse como punto inicial a \(x_0 = -0.5 \), y el valor de la raíz
-        llega a:
-
+        llega a
         \[
             \boxed{x_{r_1} \approx -0.4677830945}
         \]
@@ -445,24 +436,19 @@ la raíz de $f$ a partir de algún valor inicial arbitrario $x_0$:
             \end{tabular}
         \end{center}
 
-        Se obtiene el polinomio 
-
+        Se obtiene el polinomio
         \[
-            18.95\ x^2 - 3.8644896\ x + 2.13774292
+            18.95\ x^2 - 3.8644896\ x + 2.13774292,
         \]
     
-        Cuyas raíces pueden encontrarse con la fórmula general, obteniendo las
-        raíces faltantes:
-
+        \noindent cuyas raíces pueden encontrarse con la fórmula general,
+        obteniendo las raíces faltantes:
         \begin{align*}
             x_{r_1} & \approx -0.4677831 \\
             x_{r_2} & \approx 0.1019 + 0.32001\ i \\
             x_{r_3} & \approx 0.1019 - 0.32001\ i 
         \end{align*}
     \end{solution}
-
-    % Incertidumbres, integrales con series de taylor, bisección, punto fijo,
-    % newton-raphson
 \end{ex}
 
 \subsection{Método de la secante}
@@ -471,8 +457,7 @@ El método de Newton-Raphson que se describió anteriormente y formulado por la
 ecuación \ref{eqn:newton} emplea una derivada en el denominador. Si la función
 cuyas raíces se quieren encontrar es difícil de derivar, puede que utilizar este
 método no sea ideal. En estos casos, se recurre a modificar el método para
-sustituir la derivada por un esquema numérico en diferencias finitas centradas:
-
+sustituir la derivada por un esquema numérico en diferencias finitas centradas
 \[
     f'(x_i) \approx \frac{f(x_i) - f(x_{i-1})}{x_i - x_{i-1}}
 \]
