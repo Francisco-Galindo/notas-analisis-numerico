@@ -210,7 +210,7 @@ función $f(x)$ donde se puede despejar alguna $x$, se puede obtener una
 relación de recurrencia para calcular las raíces:
 
 \begin{equation}\label{eqn:punto-fijo}
-    f(x) = 0 \implies \boxed{x = g(x)}
+    f(x_0) = 0 \implies \boxed{x = g(x)}
 \end{equation}
 
 Si, eligiendo un dominio $D$ donde exista la raíz, se cumple que
@@ -440,7 +440,7 @@ arbitrario $x_0$:
         \[
             18.95\ x^2 - 3.8644896\ x + 2.13774292,
         \]
-    
+
         \noindent cuyas raíces pueden encontrarse con la fórmula general,
         obteniendo las raíces faltantes:
         \begin{align*}
@@ -461,3 +461,46 @@ sustituir la derivada por un esquema numérico en diferencias finitas centradas
 \[
     f'(x_i) \approx \frac{f(x_i) - f(x_{i-1})}{x_i - x_{i-1}}
 \]
+
+Sustituyendo esta relación en el esquema normal de Newton-Raphson:
+
+\begin{equation}\label{eqn:secante}
+    \boxed{x_{n+1} = x_n - \frac{f(x_n)}{ \left( \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}} \right)}}
+\end{equation}
+
+También puede utilizarse la expresión
+
+\begin{equation}\label{eqn:secante-2}
+    \boxed{x_{n+1} = x_n - \frac{f(x_n)}{ \left( \frac{f(x_n + h) - f(x_n)}{h} \right)}}
+\end{equation}
+
+
+\begin{ex}
+    Encuentre la raíz de la función
+
+    \[
+        f(x) = \sin x\ e^{\cos x} * \ln(\cosh x) - 4\ x + x^3
+    \]
+
+    \begin{figure}
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis lines=middle]
+                \addplot[color=black, domain=-3:3]{(sin(deg(x)) * e^(cos(deg(x)) * ln(cosh(x))) - 4 * x + x^3};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Función $f(x) = \sin x\ e^{\cos x} * \ln(\cosh x) - 4\ x + x^3$}
+        \label{fig:ejercicio-secante}
+    \end{figure}
+
+
+\end{ex}
+
+\subsection{Método de Newton multivariable}
+
+Supóngase que se quiere solucionar el siguiente sistema de ecuaciones:
+
+\begin{align*}
+    u(x,y) = 0 \\
+    v(x,y) = 0
+\end{align*}

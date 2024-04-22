@@ -1,0 +1,149 @@
+\chapter{Solución de ecuaciones lineales}
+
+Normalmente, cuando se resuelven problemas en ingeniería, es normal encontrar
+sistemas de ecuaciones simultáneas:
+
+\begin{align*}
+    f_1(x_1, x_2,\ \dots \ , x_n) &= 0 \\
+    f_2(x_1, x_2,\ \dots \ , x_n) &= 0 \\
+    \vdots \\
+    f_n(x_1, x_2,\ \dots \ , x_n) &= 0
+\end{align*}
+
+\section{Solución de sistemas de ecuaciones lineales}
+
+Los sistemas de ecuaciones lineales de orden $n \leq 3$ son más fáciles de
+resolver mediante métodos como el de Cramer, que consiste en resolver el
+siguiente sistema mediante determinantes:
+
+\begin{equation*}
+    \begin{aligned}[c]
+        a_{11} x + a_{12} y + a_{13} z = b_1 \\
+        a_{21} x + a_{22} y + a_{23} z = b_2 \\
+        a_{31} x + a_{32} y + a_{33} z = b_4 \\
+    \end{aligned}
+    \ \Longrightarrow
+    \begin{aligned}[c]
+        \begin{pmatrix}
+            a_{11} & a_{12} & a_{13}\\
+            a_{21} & a_{22} & a_{23}\\
+            a_{31} & a_{32} & a_{33}\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            x \\
+            y \\
+            z
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+            b_1 \\
+            b_2 \\
+            b_3
+        \end{pmatrix}
+    \end{aligned}
+\end{equation*}
+
+Con soluciones
+\begin{equation*}
+    x = \frac{
+    \begin{vmatrix}
+        b_1 & a_{12} & a_{13}\\
+        b_2 & a_{22} & a_{23}\\
+        b_3 & a_{32} & a_{33}\\
+    \end{vmatrix}}{
+    \begin{vmatrix}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}\\
+        a_{31} & a_{32} & a_{33}\\
+    \end{vmatrix}},
+    y = \frac{
+    \begin{vmatrix}
+        a_{11} & b_1 & a_{13}\\
+        a_{21} & b_2 & a_{23}\\
+        a_{31} & b_3 & a_{33}\\
+    \end{vmatrix}}{
+    \begin{vmatrix}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}\\
+        a_{31} & a_{32} & a_{33}\\
+    \end{vmatrix}},
+    z = \frac{
+    \begin{vmatrix}
+        a_{11} & a_{12} & b_1\\
+        a_{21} & a_{22} & b_2\\
+        a_{31} & a_{32} & b_3\\
+    \end{vmatrix}}{
+    \begin{vmatrix}
+        a_{11} & a_{12} & a_{13}\\
+        a_{21} & a_{22} & a_{23}\\
+        a_{31} & a_{32} & a_{33}\\
+    \end{vmatrix}}
+\end{equation*}
+
+Para resolver un sistema de ecuaciones $3 \times 3$, es necesario calcular 4
+determinantes. El número de multiplicaciones necesarias para calcular un
+determinante de una matriz $A \in M_{n \times n}$ se puede calcular con la
+ecuación de recurrencia
+\[ y_{n+1} = (n+1)(y_n + 1), \]
+
+\noindent donde $y_n$ es el número de multiplicaciones necesarias durante el
+cálculo del determimante de la matriz. Al resolver la ecuación de recurrencia,
+se obtiene la solución directa
+\[
+    y(n) = \sum_{k=1}^{n-1} \frac{n!}{k!} = n! \sum_{k=1}^{n-1} \frac{1}{k!}
+\]
+
+Este es un valor que crece extremadamente rápido, por ejemplo, una matriz de
+orden 4 necesita 40 multiplicaciones y una matriz de orden 5 necesita 200. El
+crecimiento en el número de operaciones necesarias crece de manera exponencial,
+lo que hace que se vuelva altamente impráctico para matrices de orden grande.
+Dado que el método de Cramer se basa en el cálculo de determinantes, el método
+se vuelve inútil cuando se quieren resolver sistemas de ecuaciones grandes.
+
+Debido a lo anterior es que, al momento de resolver sistemas de ecuaciones
+grandes, se utilizará el método de \emph{eliminación gaussiana}. Otros métodos,
+como el de \emph{descomposición LU}, empleado para factorizar matrices, están
+también basados en la eliminación gaussiana.
+
+\section{Eliminación Gaussiana}
+
+La eliminación de renglones mediante operaciones elementales funciona para
+matrices de cualquier orden, así que se antoja automatizar el proceso para
+resolver cualquier sistema de ecuaciones lineales mediante un programa de
+computadora. El esquema más sencillo es la \emph{eliminación gaussiana simple}.
+
+El método tiene todas las características de la resolución de sistemas de
+ecuaciones lineales. Se le llama simple porque no toma en cuenta ciertas
+condiciones, como aquella donde todo un renglón se llena de ceros, dando como
+resultado que el sistema es compatible indeterminado.
+
+Considere el siguiente sistema de ecuaciones:
+
+\[ \spalignsys {
+    a_{11}x_1 + a_{12}x_2 + a_{13}x_3 + \dots + a_{1n}x_n = b_1;
+    a_{21}x_1 + a_{22}x_2 + a_{23}x_3 + \dots + a_{2n}x_n = b_2;
+    a_{31}x_1 + a_{32}x_2 + a_{33}x_3 + \dots + a_{3n}x_n = b_3;
+    \.       \+          \+          \+ \vdots \+;
+    a_{n1}x_1 + a_{n2}x_2 + a_{n3}x_3 + \dots + a_{nn}x_n = b_n}
+\]
+
+% Hablar sobre sustitución hacia atrás y hacia adelante
+
+Mediante operaciones elementales, puede modificarse el sistema, escalando una de
+las filas y sumándola
+
+\paragraph*{Sustitución hacia atrás:} De la matriz triangular resultante, se
+puede inferir del último renglón que:
+\[
+\]
+
+\begin{ex}
+    
+    Emplee la eliminación de Gauss simple para resolver
+    \[ \spalignsys{
+        3x_1 \+ -0.1x_2 \+ -0.2x_3 = 7.85;
+        0.1x_1 \+ 7x_2 \+ -0.3x_3 = -19.3;
+        0.3 \+ -0.2x_2 \+ 10x_3 = 71.4}
+    \]
+
+\end{ex}
