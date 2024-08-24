@@ -217,8 +217,7 @@ Si, eligiendo un dominio $D$ donde exista la raíz, se cumple que
 \[
     \left| g'(x) \right| < 1 \land x \in D
 \]
-
-\noindent puede transformarse \ref{eqn:punto-fijo} en una relación de
+puede transformarse \ref{eqn:punto-fijo} en una relación de
 recurrencia:
 
 \begin{equation} \label{eqn:recurrencia-punto-fijo}
@@ -255,7 +254,7 @@ recurrencia:
             \centering
             \begin{tikzpicture}
                 \begin{axis}[xmin=0, xmax=1, ymin=-0.5, ymax=1.5, axis lines=middle]
-                    \addplot[color=black, domain=0:1]{e^(-x) - x};
+                    \addplot[color=black, samples=4, domain=0:1]{e^(-x) - x};
                 \end{axis}
             \end{tikzpicture}
             \caption{Función $f(x) = e^{-x} - x$}
@@ -284,12 +283,10 @@ espiral de donde surge el nombre ``función contraída''
 \begin{ex}
     La siguiente ecuación puede resolverse vara valores de $r \in [0,4]$,
     donde $r$ representa la taza de crecimiento poblacional:
-
     \[
         x - rx(1 - x) = 0
     \]
-
-    \noindent donde, aplicando el método de punto fijo se obtiene la relación
+    donde, aplicando el método de punto fijo se obtiene la relación
     \[
         x_{n+1} = r x_n (1 - x_n)
     \]
@@ -357,7 +354,7 @@ arbitrario $x_0$:
             \centering
             \begin{tikzpicture}
                 \begin{axis}[xmin=0, xmax=1, ymin=-0.5, ymax=2, axis lines=middle]
-                    \addplot[color=black, domain=0:1]{x^3 + x^2 + ln(x) + 2 * cos(deg(x))};
+                    \addplot[color=black, samples=16, domain=0:1]{x^3 + x^2 + ln(x) + 2 * cos(deg(x))};
                 \end{axis}
             \end{tikzpicture}
             \caption{Función $f(x) = x^3 + x^2 + \ln(x) + 2 \cos(x)$}
@@ -408,7 +405,7 @@ arbitrario $x_0$:
             \centering
             \begin{tikzpicture}
                 \begin{axis}[xmin=-0.6, xmax=0.2, ymin=-0.2, ymax=1.5, axis lines=middle]
-                    \addplot[color=black, domain=-0.5:0.2]{18.95*x^3 + 5*x^2 + 0.33*x + 1};
+                    \addplot[color=black, samples=24, domain=-0.5:0.2]{18.95*x^3 + 5*x^2 + 0.33*x + 1};
                 \end{axis}
             \end{tikzpicture}
             \caption{Función $f(x) = 18.95\ x^3 + 5\ x^2 + 0.33\ x + 1$}
@@ -440,8 +437,7 @@ arbitrario $x_0$:
         \[
             18.95\ x^2 - 3.8644896\ x + 2.13774292,
         \]
-
-        \noindent cuyas raíces pueden encontrarse con la fórmula general,
+        cuyas raíces pueden encontrarse con la fórmula general,
         obteniendo las raíces faltantes:
         \begin{align*}
             x_{r_1} & \approx -0.4677831 \\
@@ -479,17 +475,17 @@ También puede utilizarse la expresión
     Encuentre la raíz de la función
 
     \[
-        f(x) = \sin x\ e^{\cos x} * \ln(\cosh x) - 4\ x + x^3
+        f(x) = \sin x\ e^{\cos x} \ln(\cosh x) - 4\ x + x^3
     \]
 
     \begin{figure}
         \centering
         \begin{tikzpicture}
             \begin{axis}[xmin=-3, xmax=3, ymin=-4, ymax=4, axis lines=middle]
-                \addplot[color=black, domain=-3:3]{(sin(deg(x)) * e^(cos(deg(x)) * ln(cosh(x))) - 4 * x + x^3};
+                \addplot[color=black, domain=-2.5:2.5]{(sin(deg(x)) * e^(cos(deg(x)) * ln(cosh(x))) - 4 * x + x^3};
             \end{axis}
         \end{tikzpicture}
-        \caption{Función $f(x) = \sin x\ e^{\cos x} * \ln(\cosh x) - 4\ x + x^3$}
+        \caption{Función $f(x) = \sin x\ e^{\cos x} \ln(\cosh x) - 4\ x + x^3$}
         \label{fig:ejercicio-secante}
     \end{figure}
 

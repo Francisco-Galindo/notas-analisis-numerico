@@ -1,5 +1,7 @@
-\documentclass[a5paper,11pt]{book}
+\documentclass[11pt]{memoir}
 \usepackage[spanish, mexico]{babel}
+
+\stockstatement \pagestatement
 
 \input{latex-note-preamble/preamble}
 
@@ -9,15 +11,37 @@
 \author{Francisco Galindo}
 \date{Semestre 2024-2}
 
+\makeatletter
+\def\makemytitle{%
+    \null
+    \thispagestyle{empty}%
+    \vfill
+    \begin{center}\leavevmode
+        \normalfont
+        {\LARGE\raggedleft \@author\par}%
+        \hrulefill\par
+        {\huge\raggedright \textbf{\@title}\par}%
+        \vskip 1cm
+        %    {\Large \@date\par}%
+    \end{center}%
+    \vfill
+    \null
+    \cleardoublepage
+}
+\makeatother
+
 
 \begin{document}
     \frontmatter
 
-    \input{latex-titlepage/titlepage}
+    % \input{latex-titlepage/titlepage}
+    \makemytitle
 
     \begin{dedication}
         Para Yael y el Erick
     \end{dedication}
+
+    \cleardoublepage
 
     \tableofcontents
     % \listoffigures

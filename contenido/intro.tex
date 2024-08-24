@@ -64,8 +64,8 @@ son fáciles de usar.
         \centering
         \begin{tikzpicture}
             \begin{axis}[xmin=-3, xmax=3, ymin=-1.5, ymax=1.5, axis lines=middle]
-                \addplot[color=black, domain=-3:3]{x^2 - 4};
-                \addplot[color=black, dashed, domain=-3:3]{sin(deg(x))};
+                \addplot[color=black, samples=12, domain=-3:3]{x^2 - 4};
+                \addplot[color=black, dashed, samples=16, domain=-3:3]{sin(deg(x))};
             \end{axis}
         \end{tikzpicture}
         \caption{Visualización de soluciones por el método gráfico.}
@@ -166,8 +166,7 @@ estas condiciones de detención:
         \[
             E_T = P_{B_1} - P_{B_2} = 3552 - 3633 = -81\ [\si{kg}]
         \]
-
-        \noindent y, para calcular el error relativo, se usa:
+        y, para calcular el error relativo, se usa:
         \[
             \boxed{\varepsilon_T = \left| \frac{P_{B_1} - P_{B_2}}{P_{B_1}} \right| * 100\% = 2.28\%}
         \]
@@ -535,8 +534,8 @@ de Taylor multivariables resultan de gran utilidad.
 \begin{definition}[Serie de Taylor multivariable]
 
     La serie de Taylor de varias variables para una función $f$ que depende
-    de las variables $\overline{x} = (x_1, x_2, ..., x_n)$, alrededor del
-    punto $ \overline{a} = (a_1, a_2, ..., a_n)$ es:
+    de las variables $\vec{x} = (x_1, x_2, ..., x_n)$, alrededor del
+    punto $ \vec{a} = (a_1, a_2, ..., a_n)$ es:
 
     \begin{align*}
         f = & \ f(x_1, x_2, ..., x_n) = f(a_1, a_2, ..., a_n) + \\ 
@@ -552,8 +551,8 @@ de Taylor multivariables resultan de gran utilidad.
 \end{definition}
 
 A partir de la definición \ref{eq:def-taylor-multi}, puede estimarse la
-incertidumbre en una función multivariable. Si asumimos que el punto $(a_1, a_2,
-..., a_n)$ está cerca de $(x_1, x_2, ..., x_n)$, es decir:
+incertidumbre en una función multivariable. Si se ausme que el punto $(a_1,\
+\dots, a_n)$ está cerca de $(x_1,\ \dots, x_n)$, es decir:
 
 \begin{align*}
     x_1 - a_1 &< 1 \\
@@ -565,10 +564,10 @@ incertidumbre en una función multivariable. Si asumimos que el punto $(a_1, a_2
 Puede simplificarse \ref{eq:def-taylor-multi} a sus términos de primer orden:
 
 \begin{align*}
-    f(\overline{x}) \approx f(\overline{a}) + \sum_{k=1}^{n} \
-    \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k) \\
-    f(\overline{x}) - f(\overline{a}) \approx \sum_{k=1}^{n} \
-    \frac{\partial f(\overline{a})}{\partial x_k} (x_k - a_k)
+    f(\vec{x}) \approx f(\vec{a}) + \sum_{k=1}^{n} \
+    \frac{\partial f(\vec{a})}{\partial x_k} (x_k - a_k) \\
+    f(\vec{x}) - f(\vec{a}) \approx \sum_{k=1}^{n} \
+    \frac{\partial f(\vec{a})}{\partial x_k} (x_k - a_k)
 \end{align*}
 
 Tomando el valor absoluto en ambos lados \footnote{Aquí se utiliza la
@@ -578,7 +577,7 @@ Tomando el valor absoluto en ambos lados \footnote{Aquí se utiliza la
 
 \begin{equation} \label{eq:desigualdad-tri-taylor}
     \Delta f \leq \sum_{k=1}^{n} \left |\ 
-    \frac{\partial f(\overline{a})}{\partial x_k} \right| \
+    \frac{\partial f(\vec{a})}{\partial x_k} \right| \
     \Delta x_k
 \end{equation}
 
@@ -589,7 +588,7 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
 
     Suponga que una resistencia eléctrica que se usa para calentar agua se
     alimenta a un contacto de 127 [V] y consume una corriente eléctrica de
-    2[A] (datos obtenidos con un multímetro). Si el equipo de medición
+    2 [A] (datos obtenidos con un multímetro). Si el equipo de medición
     indica que el voltaje tiene una incertidumbre de $\pm$ 0.3 [V] t la
     corriente $\pm$ 0.1 [A], ¿Cuál es la incertidumbre total de la medición de
     la potencia?
@@ -637,11 +636,11 @@ incertidumbres de cada una de las variables $x_i\ \forall i \in N, i \leq n$.
         E = \frac{1}{2} m v^2
     \end{equation*}
 
-    Si se ha determinado de manera experimental que \(m = 10^{-8} [\si{kg}]\)
-    y \(v = 15 \left[\si{ \frac{m}{s} } \right]\), determine la energía
-    cinética si la incertidumbre de las medidas para la masa y la velocidad son
-    de \(\pm 10^{-10} [\si{kg}]\) y $\pm 0.02 \left[ \si{\frac{m}{s}}
-    \right]$.
+    Si se ha determinado de manera experimental que la masa es \(m = 10^{-8}
+    [\si{kg}]\) y la velocidad es \(v = 15 \left[\si{ \frac{m}{s} } \right]\),
+    determine la energía cinética de la partícula si la incertidumbre de las
+    medidas para la masa y la velocidad son de \(\pm 10^{-10} [\si{kg}]\) y
+    $\pm 0.02 \left[ \si{\frac{m}{s}} \right]$.
 
     \begin{solution}
 
